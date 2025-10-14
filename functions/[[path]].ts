@@ -10,7 +10,10 @@ export const onRequest = async ({ request, next }) => {
     const indexResp = await fetch(new URL("/index.html", url));
     return new Response(await indexResp.text(), {
       status: 200,
-      headers: { "content-type": "text/html; charset=utf-8" },
+      headers: {
+    "content-type": "text/html; charset=utf-8",
+    "cache-control": "no-cache"
+    }
     });
   }
 
