@@ -65,7 +65,14 @@ function Pricing() {
               <div className="text-sm text-gray-500">{p.name}</div>
               <div className="mt-1 text-3xl font-extrabold text-hoit-purple">{p.price}</div>
               {p.note && <div className="text-gray-600 mt-1">{p.note}</div>}
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener" className="btn btn-lavender mt-6">Book A Session</a>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-lavender mt-6"
+              >
+                Book A Session
+              </a>
             </div>
           ))}
         </div>
@@ -120,7 +127,7 @@ function PrivacyPolicy() {
         <h2 className="text-2xl font-bold text-hoit-purple mb-3">Privacy Policy</h2>
         <div className="glass p-6 text-gray-700 space-y-3">
           <p>We collect only the information needed to book and deliver services, such as your name, contact details, and relevant health history that you choose to share. Your information is used to provide care, manage appointments, and communicate with you.</p>
-          <p>We keep records securely and do not sell personal data. You may request a copy or correction of your information at any time by emailing <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener">our contact form</a>.</p>
+          <p>We keep records securely and do not sell personal data. You may request a copy or correction of your information at any time by emailing <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">our contact form</a>.</p>
           <p>This page is informational and not legal advice.</p>
         </div>
       </div>
@@ -135,7 +142,7 @@ function CancellationPolicy() {
         <h2 className="text-2xl font-bold text-hoit-purple mb-3">Cancellation Policy</h2>
         <div className="glass p-6 text-gray-700 space-y-3">
           <p>Please provide at least 24 hours notice to cancel or reschedule. Late cancellations or no shows may incur a fee up to the full session rate.</p>
-          <p>To cancel, email <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener">our contact form</a>.</p>
+          <p>To cancel, email <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">our contact form</a>.</p>
         </div>
       </div>
     </section>
@@ -149,7 +156,12 @@ function Contact() {
       <div className="container">
         <div className="card card-accent-lavender p-6">
           <h2 className="text-2xl font-bold text-hoit-purple mb-2">Contact</h2>
-          <a className="text-hoit-purple hover:underline" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener">
+          <a
+            className="text-hoit-purple hover:underline"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             handsonintegrativetherapy@gmail.com
           </a>
         </div>

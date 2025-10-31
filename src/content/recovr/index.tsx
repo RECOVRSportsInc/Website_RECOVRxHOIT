@@ -14,11 +14,12 @@ export function Hero() {
         <div className="mt-8 flex gap-4">
           <a href="#programs" className="btn btn-primary">Explore Programs</a>
           <a
-            href="#contact"
-            className="btn btn-outline"
-            style={{ borderColor: "#2B7FB9", color: "#0A2240" }}
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfsj5KsvXK2JjXY1SkWW7uzD00inFBp5wkv7eYl2Wb2lIjqRQ/viewform?usp=publish-editor"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-gold"
           >
-            Contact
+            Book a Session
           </a>
         </div>
       </div>
@@ -77,14 +78,19 @@ function Gallery() {
   );
 }
 
-/* CONTACT on black, card with blue accent to match Programs */
+/* CONTACT on black, card with blue accent */
 function Contact() {
   return (
     <section id="contact" className="section bg-black">
       <div className="container">
         <div className="card card-accent-blue p-6">
           <h2 className="text-2xl font-bold text-recovr-blue mb-2">Contact</h2>
-          <a className="text-recovr-blue hover:underline" href="https://docs.google.com/forms/d/e/1FAIpQLSfsj5KsvXK2JjXY1SkWW7uzD00inFBp5wkv7eYl2Wb2lIjqRQ/viewform?usp=publish-editor" target="_blank" rel="noopener">
+          <a
+            className="text-recovr-blue hover:underline"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfsj5KsvXK2JjXY1SkWW7uzD00inFBp5wkv7eYl2Wb2lIjqRQ/viewform?usp=publish-editor"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             recovrsports@proton.me
           </a>
         </div>
