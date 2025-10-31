@@ -84,7 +84,7 @@ function Contact() {
       <div className="container">
         <div className="card card-accent-blue p-6">
           <h2 className="text-2xl font-bold text-recovr-blue mb-2">Contact</h2>
-          <a className="text-recovr-blue hover:underline" href="mailto:recovrsports@proton.me">
+          <a className="text-recovr-blue hover:underline" href="https://docs.google.com/forms/d/e/1FAIpQLSfsj5KsvXK2JjXY1SkWW7uzD00inFBp5wkv7eYl2Wb2lIjqRQ/viewform?usp=publish-editor" target="_blank" rel="noopener">
             recovrsports@proton.me
           </a>
         </div>
