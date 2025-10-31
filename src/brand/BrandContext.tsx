@@ -16,6 +16,15 @@ export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
   }, []);
+  // Auto route to HOIT when this domain is used
+  useEffect(() => {
+    const host = window.location.hostname;
+    const onRoot = window.location.pathname === "/";
+    if (host.includes("handsonintegrativetherapy.com") && onRoot) {
+      // this calls your existing path switcher
+      setBrandPath("hoit");
+   }
+}, []);
 
   const setBrandPath = (k: BrandKey) => {
     const path = k === "hoit" ? "/hoit" : "/";
