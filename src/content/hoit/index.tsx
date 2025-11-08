@@ -13,7 +13,8 @@ export function Hero() {
         </p>
         <div className="mt-8 flex gap-4">
           <a href="#services" className="btn btn-black">View Services</a>
-          <a href="#pricing" className="btn btn-lavender">Book A Session</a>
+          {/* now scrolls to the booking calendar section */}
+          <a href="#appointments" className="btn btn-lavender">Book A Session</a>
         </div>
       </div>
     </section>
@@ -23,11 +24,10 @@ export function Hero() {
 /* SERVICES on black, lavender heading */
 function Services() {
   const items = [
-    { title: "Athletic Therapy", desc: "Musculoskeletal assessment and treatment for sport and activity injuries, focusing on safe return to play and long term durability." },
+    { title: "Athletic Therapy", desc: "Assessment and treatment for sport and activity injuries, focusing on safe return to play and long term durability." },
     { title: "Massage Therapy", desc: "Clinical massage to reduce pain, improve mobility, and speed recovery. Pressure and technique tailored to you." },
     { title: "Fitness Training / Strengthening", desc: "Progressive, evidence based programs to build strength and resilience for daily life and sport." },
     { title: "Sports Rehabilitation", desc: "Targeted rehab for acute and chronic issues, combining manual therapy with corrective exercise." },
-    { title: "Technical Biomechanical Assessment", desc: "Using technology like slow motion capture for evidence based results to assess and recognize biomechanical faults in sport, exercise and posture." },
     { title: "Virtual Phone Consult", desc: "Discuss goals or concerns remotely, get advice, and an initial plan before your first session." },
   ];
   return (
@@ -47,10 +47,48 @@ function Services() {
   );
 }
 
+/* APPOINTMENTS (Google Appointment Schedule) */
+function Appointments() {
+  const BOOKING_URL = "https://calendar.app.google/mDHWJHLFwJ2a9VUe7";
+
+  return (
+    <section id="appointments" className="section">
+      <div className="container">
+        <h2 className="text-3xl font-bold text-hoit-purple mb-4 text-center">
+          Book A Session
+        </h2>
+
+        <div className="glass p-2">
+          <iframe
+            title="HOIT/RECOVR Booking"
+            src={BOOKING_URL}
+            style={{ border: 0, width: "100%", height: "900px" }}
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+
+        <p className="text-center text-sm text-gray-500 mt-3">
+          If the calendar doesn’t load,{" "}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener"
+            className="text-hoit-purple underline"
+          >
+            open the booking page in a new tab
+          </a>.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 /* PRICING */
 function Pricing() {
+  const BOOKING_URL = "https://calendar.app.google/mDHWJHLFwJ2a9VUe7";
+
   const plans = [
-    { name: "AT / Massage Consult", price: "$150 + tax", note: "New clients only, First Appointment" },
+    { name: "AT / Massage Consult", price: "$150 + tax", note: "New clients only" },
     { name: "AT / Massage 60 Minutes", price: "$130 + tax", note: "" },
     { name: "AT / Massage 45 Minutes", price: "$115 + tax", note: "" },
     { name: "AT / Massage 30 Minutes", price: "$100 + tax", note: "" },
@@ -67,9 +105,9 @@ function Pricing() {
               <div className="mt-1 text-3xl font-extrabold text-hoit-purple">{p.price}</div>
               {p.note && <div className="text-gray-600 mt-1">{p.note}</div>}
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
+                href={BOOKING_URL}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="btn btn-lavender mt-6"
               >
                 Book A Session
@@ -82,7 +120,7 @@ function Pricing() {
   );
 }
 
-/* GALLERY on black, 9 tiles, hide failed images, no helper text */
+/* GALLERY on black, 9 tiles */
 function Gallery() {
   const imgs = Array.from({ length: 9 }, (_, i) => `/photos/hoit/${i + 1}.jpg`);
   return (
@@ -113,8 +151,7 @@ function About() {
       <div className="container">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
         <div className="glass p-6 text-gray-700">
-          <p>Steven Warsh is a Registered Massage Therapist with the AMQ and a Certified Athletic Therapist (AT) with CATA living in Montreal, Quebec who takes an integrative, holistic approach to therapy. He began his training at McGill University where he completed a Bachelor of Science in Kinesiology and fell in love with Athletic Therapy during his time with the Varsity Rugby Teams there. He then completed his Bachelor of AT, with distinction, from Concordia University. He graduated from the Ontario College of Health and Technology and acquired his certificate of registration to the College of Massage Therapist of Ontario (CMTO). He has worked with Mcgill and Concordia University, Baseball Canada, Team Ontario, Team Quebec, in the Greater Toronto Hockey League with the North York Rangers AAA Team, OHL/OHF Program of Excellence and the Team Ontario Volleyball High Performance Elite Mens Team as well as Team Ontario Box Lacrosse and many more. He is a registered LEVEL 3 Massage Therapist with the Association des Massothérapeutes du Québec (AMQ), the highest ranking massage therapist level. Steven worked in private practice at Clinique MV in Westmount, Quebec for four years before the clinic was closed. Steven has been afforded the opportunity to work with patients of all ages and skill levels in almost every sport, from the grandmother who just wants to improve her balance, to the elite, national level athlete who needs that extra drive. He has rehabbed surgeries, sprains, strains, aches, pains and more. His goal is to look at the whole body and not just where you are feeling pain. Often times, the pain you are experiencing is a result of something up or down the chain in the body and if not addressed, will return later costing the patient hundreds of extra dollars. Due to Athletic Therapist's on-field work and the requirements to be able to asses and evaluate athletes in a very quick timeframe, ATs like Steven specialize in accurately assessing and deciding on what your injury is. It isn't a perfect science, but ATs are some of the best healthcare professionals at coming up with an accurate clinical impression which is vital for the patient. Steven has added Massage Therapy to his skillset, and specializes in deep tissue, and fascial work. His ability to integrate all of his knowledge from Kinesiology, Personal Training, Athletic Therapy and Massage Therapy allows the client to receive a well rounded preventative and rehabilitative treatments as needed. Steven was also able to become a certified TRX Suspension Trainer which just adds even more tools to his toolbox. After working with the U18 Baseball Canada team in Florida, Team Ontario Elite Volleyball and Lacrosse Teams, he has gained an even greater appreciation for elite level athletes and the rigours that the body goes through. As an elite baseball player himself, competitive hockey, tennis, volleyball and golfer in his youth, he relates to many of the patients he sees and his vast knowledge of sports allows for a more specific and impactful program to be designed and implemented. Utilizing the various specialties he has learned over his training affords the patient a thorough and all-encompassing rehab and treatment. One thing you can guarantee you will get from seeing Steven is 110% effort. He is a dedicated, honest and an enthusiastic hard worker who would love to see you in clinic anytime. 
-</p>
+          <p>Paste your about me here. A short intro on your background, certifications, approach, and what clients can expect.</p>
         </div>
       </div>
     </section>
@@ -129,7 +166,7 @@ function PrivacyPolicy() {
         <h2 className="text-2xl font-bold text-hoit-purple mb-3">Privacy Policy</h2>
         <div className="glass p-6 text-gray-700 space-y-3">
           <p>We collect only the information needed to book and deliver services, such as your name, contact details, and relevant health history that you choose to share. Your information is used to provide care, manage appointments, and communicate with you.</p>
-          <p>We keep records securely and do not sell personal data. You may request a copy or correction of your information at any time by emailing <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">our contact form</a>.</p>
+          <p>We keep records securely and do not sell personal data. You may request a copy or correction of your information at any time by emailing <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener">our contact form</a>.</p>
           <p>This page is informational and not legal advice.</p>
         </div>
       </div>
@@ -144,7 +181,7 @@ function CancellationPolicy() {
         <h2 className="text-2xl font-bold text-hoit-purple mb-3">Cancellation Policy</h2>
         <div className="glass p-6 text-gray-700 space-y-3">
           <p>Please provide at least 24 hours notice to cancel or reschedule. Late cancellations or no shows may incur a fee up to the full session rate.</p>
-          <p>To cancel, email <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">our contact form</a>.</p>
+          <p>To cancel, email <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener">our contact form</a>.</p>
         </div>
       </div>
     </section>
@@ -158,13 +195,8 @@ function Contact() {
       <div className="container">
         <div className="card card-accent-lavender p-6">
           <h2 className="text-2xl font-bold text-hoit-purple mb-2">Contact</h2>
-          <a
-            className="text-hoit-purple hover:underline"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Email: handsonintegrativetherapy@gmail.com
+          <a className="text-hoit-purple hover:underline" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener">
+            handsonintegrativetherapy@gmail.com
           </a>
         </div>
       </div>
@@ -184,7 +216,17 @@ function BrandMark(){
 }
 
 /* EXPORTS */
-export const Sections = [Services, Pricing, Gallery, About, PrivacyPolicy, CancellationPolicy, Contact, BrandMark];
+export const Sections = [
+  Services,
+  Appointments,   // added
+  Pricing,
+  Gallery,
+  About,
+  PrivacyPolicy,
+  CancellationPolicy,
+  Contact,
+  BrandMark
+];
 
 export function Footer() {
   return (
