@@ -1,15 +1,16 @@
 import React from "react";
 import { useBrand } from "../brand/BrandContext";
 import BrandSwitch from "./BrandSwitch";
+import LanguageSwitcher from "./LanguageSwitcher"; // ⬅️ add this
 
 export default function Navbar() {
   const { brand } = useBrand();
   const base = brand.key === "hoit" ? "/hoit" : "/";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black text-white border-b border-black">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black text-white border-b border-black" data-no-translate>
       <div className="container flex items-center justify-between py-3">
-        <a href={base} className="no-underline flex items-center">
+        <a href={base} className="no-underline flex items-center" data-no-translate>
           {brand.logoSrc ? (
             <img
               src={brand.logoSrc}
@@ -21,15 +22,27 @@ export default function Navbar() {
             <span className="font-extrabold tracking-tight text-white">{brand.name}</span>
           )}
         </a>
-        <nav className="hidden md:flex items-center space-x-8">
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center space-x-8" data-no-translate>
           {brand.nav.map((item) => (
-            <a key={item.href} href={`${base}${item.href === "#" ? "" : item.href}`} className="text-white/90 hover:text-white no-underline">
+            <a
+              key={item.href}
+              href={`${base}${item.href === "#" ? "" : item.href}`}
+              className="text-white/90 hover:text-white no-underline"
+            >
               {item.label}
             </a>
           ))}
+
+          {/* Language toggle and brand toggle */}
+          <LanguageSwitcher />
           <BrandSwitch />
         </nav>
-        <div className="md:hidden">
+
+        {/* Mobile actions */}
+        <div className="md:hidden flex items-center gap-2" data-no-translate>
+          <LanguageSwitcher />
           <BrandSwitch />
         </div>
       </div>
