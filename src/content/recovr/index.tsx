@@ -13,13 +13,9 @@ export function Hero() {
         </p>
         <div className="mt-8 flex gap-4">
           <a href="#programs" className="btn btn-primary">Explore Programs</a>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfsj5KsvXK2JjXY1SkWW7uzD00inFBp5wkv7eYl2Wb2lIjqRQ/viewform?usp=publish-editor"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-gold"
-          >
-            Book a Session
+          {/* second button now Books a Session (scrolls to calendar) */}
+          <a href="#appointments" className="btn btn-outline" style={{ borderColor: "#2B7FB9", color: "#0A2240" }}>
+            Book A Session
           </a>
         </div>
       </div>
@@ -48,6 +44,41 @@ function Programs() {
               <p className="text-gray-600 mt-1">{it.desc}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* APPOINTMENTS (Google Appointment Schedule) */
+function Appointments() {
+  const BOOKING_URL = "https://calendar.app.google/mDHWJHLFwJ2a9VUe7";
+
+  return (
+    <section id="appointments" className="section">
+      <div className="container">
+        <h2 className="text-3xl font-bold text-recovr-blue mb-4 text-center">
+          Book A Session
+        </h2>
+
+        <div className="glass p-2">
+          <iframe
+            title="HOIT/RECOVR Booking"
+            src={BOOKING_URL}
+            style={{ border: 0, width: "100%", height: "900px" }}
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+
+        <div className="mt-6 text-center">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener"
+            className="text-recovr-blue underline"
+          >
+            Open booking in a new tab
+          </a>
         </div>
       </div>
     </section>
@@ -89,7 +120,7 @@ function Contact() {
             className="text-recovr-blue hover:underline"
             href="https://docs.google.com/forms/d/e/1FAIpQLSfsj5KsvXK2JjXY1SkWW7uzD00inFBp5wkv7eYl2Wb2lIjqRQ/viewform?usp=publish-editor"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
             recovrsports@proton.me
           </a>
@@ -113,7 +144,7 @@ function BrandMark() {
 }
 
 /* EXPORTS */
-export const Sections = [Programs, Gallery, Contact, BrandMark];
+export const Sections = [Programs, Appointments, Gallery, Contact, BrandMark];
 
 export function Footer() {
   return (
