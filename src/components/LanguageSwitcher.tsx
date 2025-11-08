@@ -1,37 +1,41 @@
-// src/components/LanguageSwitcher.tsx
-import React from "react";
-import { applyFrench, restoreEnglish } from "../i18n/translator";
+import React, { useEffect, useState } from "react";
+import { translatePage, getLang, setLang } from "../i18n/translator";
+
+const LANGS = [
+  { code: "en", label: "English" },
+  { code: "fr", label: "Français" },
+];
 
 export default function LanguageSwitcher() {
-  const [lang, setLang] = React.useState<"en" | "fr">(
-    (localStorage.getItem("lang") as "en" | "fr") || "en"
-  );
+  const [lang, setLangState] = useState(getLang());
 
-  React.useEffect(() => {
-    let mounted = true;
-    (async () => {
-      if (lang === "fr") {
-        await applyFrench();
-      } else {
-        restoreEnglish();
-      }
-      if (mounted) localStorage.setItem("lang", lang);
-    })();
-    return () => {
-      mounted = false;
-    };
-  }, [lang]);
+  useEffect(() => {
+    // translate immediately on mount to the last chosen language
+    translatePage(lang);
+  }, []);
+
+  const onChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const next = e.target.value as "en" | "fr";
+    setLang(next);
+    setLangState(next);
+    await translatePage(next);
+  };
 
   return (
-    <button
-      type="button"
-      className="btn btn-outline"
-      onClick={() => setLang((l) => (l === "en" ? "fr" : "en"))}
-      aria-label="Switch language"
-      title="Switch language"
-      data-no-translate
-    >
-      {lang === "en" ? "Français" : "English"}
-    </button>
+    <label className="inline-flex items-center gap-2 text-white" data-no-translate>
+      <span className="sr-only">Language</span>
+      <select
+        value={lang}
+        onChange={onChange}
+        className="bg-black text-white border border-white/30 rounded-md px-2 py-1 focus:outline-none"
+        aria-label="Language"
+      >
+        {LANGS.map(l => (
+          <option key={l.code} value={l.code} className="text-black">
+            {l.label}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
