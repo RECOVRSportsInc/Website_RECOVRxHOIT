@@ -1,98 +1,84 @@
 // src/i18n/translator.ts
-type Lang = "en" | "fr";
+// Lightweight client-side translator with currency/email preservation
 
-const CACHE_PREFIX = "t-cache-v1:";
-const MAX_NODE_LEN = 600;
+const STORAGE_KEY = "site_lang";
 
-function storageKey(text: string, to: Lang) {
-  return `${CACHE_PREFIX}${to}:${text}`;
+// simple language getters
+export function getLang(): "en" | "fr" {
+  const v = (localStorage.getItem(STORAGE_KEY) || "en").toLowerCase();
+  return v === "fr" ? "fr" : "en";
+}
+export function setLang(l: "en" | "fr") {
+  localStorage.setItem(STORAGE_KEY, l);
 }
 
-function isSkippableText(text: string) {
-  const t = text.trim();
-  if (!t) return true;
-  if (t.length > MAX_NODE_LEN) return true;
-  if (/^https?:\/\//i.test(t)) return true;
-  if (/\S+@\S+\.\S+/.test(t)) return true;
-  if (/^[\W_]+$/.test(t)) return true;
-  return false;
-}
+// nodes to skip entirely
+function shouldSkip(el: Element): boolean {
+  // do not translate anything carrying this attribute
+  if (el.hasAttribute("data-no-translate")) return true;
 
-function shouldSkipElement(el: Element | null) {
-  if (!el) return true;
-  if ((el as HTMLElement).dataset?.noTranslate !== undefined) return true;
+  // inputs, code blocks, preformatted, anchor hrefs, logo images etc
   const tag = el.tagName.toLowerCase();
-  if (["script", "style", "code", "pre", "svg", "img", "input", "textarea", "select"].includes(tag))
-    return true;
-  if (tag === "a") return true;
+  if (["code", "pre", "script", "style"].includes(tag)) return true;
+
   return false;
 }
 
-function collectTextNodes(root: Element): Text[] {
-  const out: Text[] = [];
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode(node) {
-      const parent = node.parentElement;
-      if (!parent || shouldSkipElement(parent)) return NodeFilter.FILTER_REJECT;
-      const txt = node.nodeValue || "";
-      if (isSkippableText(txt)) return NodeFilter.FILTER_REJECT;
-      return NodeFilter.FILTER_ACCEPT;
-    },
-  });
-  let current: Node | null = walker.nextNode();
-  while (current) {
-    out.push(current as Text);
-    current = walker.nextNode();
-  }
+// very small dictionary base (you can expand later)
+const DICT: Record<string, Record<string, string>> = {
+  en: {},
+  fr: {},
+};
+
+// naive phrase translation (can later hook to an API or improve dictionaries)
+function translateText(text: string, to: "en" | "fr") {
+  if (to === "en") return text; // original content is English
+
+  // minimal replacements; you can expand
+  let out = text
+    .replace(/\bServices\b/g, "Services")
+    .replace(/\bPricing\b/g, "Tarifs")
+    .replace(/\bPrograms\b/g, "Programmes")
+    .replace(/\bPhoto Gallery\b/g, "Galerie photo")
+    .replace(/\bAbout Me\b/g, "À propos")
+    .replace(/\bContact\b/g, "Contact")
+    .replace(/\bBook A Session\b/gi, "Réserver une séance")
+    .replace(/\bView Services\b/gi, "Voir les services")
+    .replace(/\bExplore Programs\b/gi, "Explorer les programmes")
+    .replace(/\bPrivacy Policy\b/gi, "Politique de confidentialité")
+    .replace(/\bCancellation Policy\b/gi, "Politique d’annulation")
+    .replace(/\bour contact form\b/gi, "notre formulaire de contact");
+
+  // post-fix currency: if any £ slipped in, restore $
+  out = out.replace(/£/g, "$");
+
   return out;
 }
 
-async function translateText(text: string, to: Lang): Promise<string> {
-  const key = storageKey(text, to);
-  const cached = localStorage.getItem(key);
-  if (cached) return cached;
-
-  const res = await fetch("/api/translate", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ text, source: "en", target: to }),
-  });
-  if (!res.ok) throw new Error("translate failed");
-  const { translated } = (await res.json()) as { translated: string };
-  localStorage.setItem(key, translated);
-  return translated;
-}
-
-export async function applyFrench(): Promise<void> {
-  const root = document.getElementById("root");
-  if (!root) return;
-
-  const nodes = collectTextNodes(root);
-  nodes.forEach((n) => {
-    const el = n as any;
-    if (!el.__orig) el.__orig = n.nodeValue || "";
+// translate DOM nodes in-place
+function walkAndTranslate(root: Element, to: "en" | "fr") {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent) return NodeFilter.FILTER_REJECT;
+      if (shouldSkip(parent)) return NodeFilter.FILTER_REJECT;
+      // skip email addresses and urls
+      if (/@|https?:\/\//.test(node.nodeValue || "")) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    },
   });
 
-  for (const n of nodes) {
-    const orig = n.nodeValue || "";
-    try {
-      const fr = await translateText(orig, "fr");
-      n.nodeValue = fr;
-    } catch {}
-  }
-  document.documentElement.lang = "fr";
+  const nodes: Text[] = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode as Text);
+
+  nodes.forEach(t => {
+    if (!t.nodeValue) return;
+    t.nodeValue = translateText(t.nodeValue, to);
+  });
 }
 
-export function restoreEnglish(): void {
-  const root = document.getElementById("root");
+export async function translatePage(to: "en" | "fr") {
+  const root = document.body;
   if (!root) return;
-
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-  let current = walker.nextNode();
-  while (current) {
-    const t = current as any;
-    if (t.__orig !== undefined) current.nodeValue = t.__orig as string;
-    current = walker.nextNode();
-  }
-  document.documentElement.lang = "en";
+  walkAndTranslate(root, to);
 }

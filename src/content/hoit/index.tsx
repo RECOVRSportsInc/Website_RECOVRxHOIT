@@ -103,6 +103,7 @@ function Pricing() {
             <div key={p.name} className="card card-accent-lavender p-6">
               <div className="text-sm text-gray-500">{p.name}</div>
               <div className="mt-1 text-3xl font-extrabold text-hoit-purple">{p.price}</div>
+                <span data-no-translate>{p.price}</span>
               {p.note && <div className="text-gray-600 mt-1">{p.note}</div>}
               <a
                 href={BOOKING_URL}
