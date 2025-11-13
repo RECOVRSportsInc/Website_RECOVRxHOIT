@@ -1,3 +1,4 @@
+// src/i18n/translations.ts
 import type { Language } from "../stores/languageStore";
 
 export const translations = {
@@ -10,14 +11,20 @@ export const translations = {
       cancellation: "Cancellation Policy",
       contact: "Contact",
       programs: "Programs",
-      explorePrograms: "Explore Programs",
     },
     common: {
       bookSession: "Book A Session",
       viewServices: "View Services",
+      explorePrograms: "Explore Programs",
       here: "here",
-      languageName: "English",
-      frenchName: "Français",
+    },
+    hoit: {
+      heroTitle: "Hands On Integrative Therapy",
+      heroTagline: "Athletic therapy and massage therapy services for all ages.",
+    },
+    recovr: {
+      heroTitle: "RECOVR Sports",
+      heroTagline: "High performance training and recovery for athletes and active people.",
     },
   },
   fr: {
@@ -29,14 +36,22 @@ export const translations = {
       cancellation: "Politique d’annulation",
       contact: "Contact",
       programs: "Programmes",
-      explorePrograms: "Voir les programmes",
     },
     common: {
       bookSession: "Réserver une séance",
       viewServices: "Voir les services",
+      explorePrograms: "Voir les programmes",
       here: "ici",
-      languageName: "English",
-      frenchName: "Français",
+    },
+    hoit: {
+      heroTitle: "Hands On Integrative Therapy",
+      heroTagline:
+        "Services de thérapie du sport et de massothérapie pour tous les âges.",
+    },
+    recovr: {
+      heroTitle: "RECOVR Sports",
+      heroTagline:
+        "Entraînement et récupération de haute performance pour athlètes et personnes actives.",
     },
   },
 } as const;
