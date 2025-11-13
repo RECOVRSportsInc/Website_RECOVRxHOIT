@@ -1,8 +1,10 @@
 import React from "react";
 
 type Props = {
-  embedUrl?: string; // Google “appointments/schedules/...” embed URL
-  linkUrl: string;   // your booking link (fallback button)
+  /** Google “appointments/schedules/...” embed URL (optional) */
+  embedUrl?: string;
+  /** Booking link to open in a new tab as a fallback */
+  linkUrl: string;
 };
 
 export default function CalendarCard({ embedUrl, linkUrl }: Props) {
@@ -19,7 +21,7 @@ export default function CalendarCard({ embedUrl, linkUrl }: Props) {
               <iframe
                 src={embedUrl}
                 width="100%"
-                height="700"
+                height={700}
                 style={{ border: 0 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -29,8 +31,13 @@ export default function CalendarCard({ embedUrl, linkUrl }: Props) {
           ) : (
             <p className="text-white">
               Use the booking link{" "}
-              <a className="underline" href={linkUrl} target="_blank" rel="noopener">
-                <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ29FC-SKHVnIw6hdITjVxxPhbnWI-LV7ISC5lhb-w-0SvvXhkRMNApyAD1buSYv6ckbYf-0733X?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+              <a
+                className="underline"
+                href={linkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                here
               </a>
               .
             </p>

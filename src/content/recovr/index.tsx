@@ -1,4 +1,6 @@
 import React from "react";
+import CalendarCard from "../../components/CalendarCard";
+
 
 /* HERO */
 export function Hero() {
@@ -52,8 +54,6 @@ function Programs() {
 
 /* APPOINTMENTS (Google Appointment Schedule) */
 function Appointments() {
-  const BOOKING_URL = "https://calendar.app.google/mDHWJHLFwJ2a9VUe7";
-
   return (
     <section id="appointments" className="section">
       <div className="container">
@@ -61,29 +61,15 @@ function Appointments() {
           Book A Session
         </h2>
 
-        <div className="glass p-2">
-          <iframe
-            title="HOIT/RECOVR Booking"
-            src={BOOKING_URL}
-            style={{ border: 0, width: "100%", height: "900px" }}
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-
-        <div className="mt-6 text-center">
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener"
-            className="text-recovr-blue underline"
-          >
-            Open booking in a new tab
-          </a>
-        </div>
+        <CalendarCard
+          embedUrl="https://calendar.google.com/calendar/appointments/schedules/AcZssZ29FC-SKHVnIw6hdITjVxxPhbnWI-LV7ISC5lhb-w-0SvvXhkRMNApyAD1buSYv6ckbYf-0733X?gv=true"
+          linkUrl="https://calendar.app.google/mDHWJHLFwJ2a9VUe7"
+        />
       </div>
     </section>
   );
 }
+
 
 /* GALLERY on baby blue */
 function Gallery() {
