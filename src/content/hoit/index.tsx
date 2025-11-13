@@ -1,4 +1,5 @@
 import React from "react";
+import CalendarCard from "../../components/CalendarCard";
 
 /* HERO */
 export function Hero() {
@@ -49,8 +50,6 @@ function Services() {
 
 /* APPOINTMENTS (Google Appointment Schedule) */
 function Appointments() {
-  const BOOKING_URL = "https://calendar.app.google/mDHWJHLFwJ2a9VUe7";
-
   return (
     <section id="appointments" className="section">
       <div className="container">
@@ -58,30 +57,15 @@ function Appointments() {
           Book A Session
         </h2>
 
-        <div className="glass p-2">
-          <iframe
-            title="HOIT/RECOVR Booking"
-            src={BOOKING_URL}
-            style={{ border: 0, width: "100%", height: "900px" }}
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-
-        <p className="text-center text-sm text-gray-500 mt-3">
-          If the calendar doesn’t load,{" "}
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener"
-            className="text-hoit-purple underline"
-          >
-            open the booking page in a new tab
-          </a>.
-        </p>
+        <CalendarCard
+          embedUrl="https://calendar.google.com/calendar/appointments/schedules/AcZssZ29FC-SKHVnIw6hdITjVxxPhbnWI-LV7ISC5lhb-w-0SvvXhkRMNApyAD1buSYv6ckbYf-0733X?gv=true"
+          linkUrl="https://calendar.app.google/mDHWJHLFwJ2a9VUe7"
+        />
       </div>
     </section>
   );
 }
+
 
 /* PRICING */
 function Pricing() {
@@ -166,8 +150,13 @@ function PrivacyPolicy() {
       <div className="container">
         <h2 className="text-2xl font-bold text-hoit-purple mb-3">Privacy Policy</h2>
         <div className="glass p-6 text-gray-700 space-y-3">
-          <p>We collect only the information needed to book and deliver services, such as your name, contact details, and relevant health history that you choose to share. Your information is used to provide care, manage appointments, and communicate with you.</p>
-          <p>We keep records securely and do not sell personal data. You may request a copy or correction of your information at any time by emailing <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener">our contact form</a>.</p>
+          <p>
+            We keep records securely and do not sell personal data. You may request a copy or correction of your information at any time by using our contact form (
+            <a className="text-hoit-purple" href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog" target="_blank" rel="noopener">
+              here
+            </a>
+            ).
+          </p>
           <p>This page is informational and not legal advice.</p>
         </div>
       </div>
