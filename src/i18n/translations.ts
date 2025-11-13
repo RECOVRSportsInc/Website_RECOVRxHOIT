@@ -24,7 +24,8 @@ export const translations = {
     },
     recovr: {
       heroTitle: "RECOVR Sports",
-      heroTagline: "High performance training and recovery for athletes and active people.",
+      heroTagline:
+        "High performance training and recovery for athletes and active people.",
     },
   },
   fr: {
