@@ -1,27 +1,39 @@
-import { useBrand } from "../brand/BrandContext";
+// src/components/BrandSwitch.tsx
 
-/**
- * BrandSwitch
- * When viewing HOIT, the button goes to /recovrsports.
- * When viewing RECOVR, the button goes to /hoit.
- * Uses the current domain automatically.
- */
+import { useBrand } from "../brand/BrandContext";
+import LanguageToggle from "./LanguageToggle";
+
 export default function BrandSwitch() {
   const { brand } = useBrand();
   const isHoit = brand.key === "hoit";
 
-  const origin =
-    typeof window !== "undefined" ? window.location.origin : "";
+  // solid colors for both directions:
+  // - HOIT view → blue "Switch to RECOVR"
+  // - RECOVR view → lavender "Switch to HOIT"
+  const buttonClasses = isHoit
+    ? "btn text-xs md:text-sm bg-[#2B7FB9] text-white shadow-sm hover:brightness-110"
+    : "btn text-xs md:text-sm bg-[#8B5CF6] text-white shadow-sm hover:brightness-110";
 
-  const href = isHoit ? `${origin}/recovrsports` : `${origin}/hoit`;
-  const label = isHoit ? "Switch to RECOVR" : "Switch to HOIT";
-
-  // keep your existing button styles
-  const className = isHoit ? "btn btn-lavender" : "btn btn-gold";
+  const handleClick = () => {
+    if (isHoit) {
+      // from HOIT → go to RECOVR root
+      window.location.href = "/";
+    } else {
+      // from RECOVR → go to HOIT
+      window.location.href = "/hoit";
+    }
+  };
 
   return (
-    <a href={href} className={className} aria-label={label} title={label}>
-      {label}
-    </a>
+    <div className="flex items-center gap-3">
+      <LanguageToggle />
+      <button
+        type="button"
+        onClick={handleClick}
+        className={buttonClasses}
+      >
+        {isHoit ? "Switch to RECOVR" : "Switch to HOIT"}
+      </button>
+    </div>
   );
 }

@@ -8,7 +8,7 @@ export const translations = {
       languageEnglish: "English",
       languageFrench: "French",
       openBookingForm: "Open booking form",
-      contactFormHere: "here"
+      contactFormHere: "here",
     },
 
     nav: {
@@ -18,7 +18,7 @@ export const translations = {
       privacy: "Privacy Policy",
       cancellation: "Cancellation Policy",
       contact: "Contact",
-      programs: "Programs"
+      programs: "Programs",
     },
 
     hoit: {
@@ -33,28 +33,28 @@ export const translations = {
         {
           id: "athleticTherapy",
           title: "Athletic Therapy",
-          desc: "Assessment and treatment for sport and activity injuries, focusing on safe return to play and long term durability."
+          desc: "Assessment and treatment for sport and activity injuries, focusing on safe return to play and long term durability.",
         },
         {
           id: "massageTherapy",
           title: "Massage Therapy",
-          desc: "Clinical massage to reduce pain, improve mobility, and speed recovery. Pressure and technique tailored to you."
+          desc: "Clinical massage to reduce pain, improve mobility, and speed recovery. Pressure and technique tailored to you.",
         },
         {
           id: "fitnessTraining",
           title: "Fitness Training / Strengthening",
-          desc: "Progressive, evidence based programs to build strength and resilience for daily life and sport."
+          desc: "Progressive, evidence based programs to build strength and resilience for daily life and sport.",
         },
         {
           id: "sportsRehab",
           title: "Sports Rehabilitation",
-          desc: "Targeted rehab for acute and chronic issues, combining manual therapy with corrective exercise."
+          desc: "Targeted rehab for acute and chronic issues, combining manual therapy with corrective exercise.",
         },
         {
           id: "virtualConsult",
           title: "Virtual Phone Consult",
-          desc: "Discuss goals or concerns remotely, get advice, and an initial plan before your first session."
-        }
+          desc: "Discuss goals or concerns remotely, get advice, and an initial plan before your first session.",
+        },
       ],
 
       pricingTitle: "Pricing",
@@ -63,7 +63,7 @@ export const translations = {
         { id: "at60", name: "AT / Massage 60 Minutes", price: "$130 + tax", note: "" },
         { id: "at45", name: "AT / Massage 45 Minutes", price: "$115 + tax", note: "" },
         { id: "at30", name: "AT / Massage 30 Minutes", price: "$100 + tax", note: "" },
-        { id: "phone", name: "Phone Consult", price: "$50 + tax", note: "" }
+        { id: "phone", name: "Phone Consult", price: "$50 + tax", note: "" },
       ],
 
       galleryTitle: "Photo Gallery",
@@ -87,7 +87,7 @@ export const translations = {
       contactTitle: "Contact",
       contactLinkLabel: "handsonintegrativetherapy@gmail.com",
 
-      footerText: "© 2018 Hands On Integrative Therapy"
+      footerText: "© 2018 Hands On Integrative Therapy",
     },
 
     recovr: {
@@ -102,33 +102,33 @@ export const translations = {
         {
           id: "vrGaming",
           title: "Virtual Reality Gaming",
-          desc: "Immersive gameplay sessions that promote coordination, reaction time, and fun active breaks."
+          desc: "Immersive gameplay sessions that promote coordination, reaction time, and fun active breaks.",
         },
         {
           id: "vrRehab",
           title: "Virtual Reality Rehabilitation",
-          desc: "Task specific VR training to rebuild movement patterns and engagement during rehab."
+          desc: "Task specific VR training to rebuild movement patterns and engagement during rehab.",
         },
         {
           id: "vrRelax",
           title: "Virtual Reality Relaxation",
-          desc: "Guided VR environments for breathing, de stressing, and nervous system down regulation."
+          desc: "Guided VR environments for breathing, de stressing, and nervous system down regulation.",
         },
         {
           id: "spaceBooking",
           title: "Space Booking",
-          desc: "Reserve the studio for solo sessions, small groups, or team training with access to equipment."
+          desc: "Reserve the studio for solo sessions, small groups, or team training with access to equipment.",
         },
         {
           id: "slowMo",
           title: "Slow Motion Video Analysis",
-          desc: "High frame rate capture to review technique and identify key movement opportunities."
+          desc: "High frame rate capture to review technique and identify key movement opportunities.",
         },
         {
           id: "biomech",
           title: "Sports Biomechanics Analysis",
-          desc: "Applied analysis of posture, force vectors, and timing to improve performance and reduce injury risk."
-        }
+          desc: "Applied analysis of posture, force vectors, and timing to improve performance and reduce injury risk.",
+        },
       ],
 
       galleryTitle: "Photo Gallery",
@@ -136,8 +136,8 @@ export const translations = {
       contactTitle: "Contact",
       contactLinkLabel: "recovrsports@proton.me",
 
-      footerText: "© 2024 RECOVR Sports"
-    }
+      footerText: "© 2024 RECOVR Sports",
+    },
   },
 
   fr: {
@@ -147,7 +147,7 @@ export const translations = {
       languageEnglish: "Anglais",
       languageFrench: "Français",
       openBookingForm: "Ouvrir le formulaire de réservation",
-      contactFormHere: "ici"
+      contactFormHere: "ici",
     },
 
     nav: {
@@ -157,7 +157,7 @@ export const translations = {
       privacy: "Politique de confidentialité",
       cancellation: "Politique d'annulation",
       contact: "Contact",
-      programs: "Programmes"
+      programs: "Programmes",
     },
 
     hoit: {
@@ -172,28 +172,28 @@ export const translations = {
         {
           id: "athleticTherapy",
           title: "Thérapie sportive",
-          desc: "Évaluation et traitement des blessures liées au sport et à l'activité, avec un retour au jeu sécuritaire et durable."
+          desc: "Évaluation et traitement des blessures liées au sport et à l'activité, avec un retour au jeu sécuritaire et durable.",
         },
         {
           id: "massageTherapy",
           title: "Massothérapie",
-          desc: "Massage clinique pour réduire la douleur, améliorer la mobilité et accélérer la récupération."
+          desc: "Massage clinique pour réduire la douleur, améliorer la mobilité et accélérer la récupération.",
         },
         {
           id: "fitnessTraining",
           title: "Entraînement / Renforcement",
-          desc: "Programmes progressifs fondés sur les données probantes pour développer la force et la résilience."
+          desc: "Programmes progressifs fondés sur les données probantes pour développer la force et la résilience.",
         },
         {
           id: "sportsRehab",
           title: "Réadaptation sportive",
-          desc: "Réadaptation ciblée pour les problèmes aigus et chroniques, combinant thérapie manuelle et exercices correctifs."
+          desc: "Réadaptation ciblée pour les problèmes aigus et chroniques, combinant thérapie manuelle et exercices correctifs.",
         },
         {
           id: "virtualConsult",
           title: "Consultation téléphonique",
-          desc: "Discuter de vos objectifs ou préoccupations à distance, obtenir des conseils et un plan initial."
-        }
+          desc: "Discuter de vos objectifs ou préoccupations à distance, obtenir des conseils et un plan initial.",
+        },
       ],
 
       pricingTitle: "Tarifs",
@@ -202,12 +202,12 @@ export const translations = {
           id: "consult",
           name: "Consultation AT / Massage",
           price: "150 $ + taxes",
-          note: "Nouveaux clients seulement"
+          note: "Nouveaux clients seulement",
         },
         { id: "at60", name: "AT / Massage 60 minutes", price: "130 $ + taxes", note: "" },
         { id: "at45", name: "AT / Massage 45 minutes", price: "115 $ + taxes", note: "" },
         { id: "at30", name: "AT / Massage 30 minutes", price: "100 $ + taxes", note: "" },
-        { id: "phone", name: "Consultation téléphonique", price: "50 $ + taxes", note: "" }
+        { id: "phone", name: "Consultation téléphonique", price: "50 $ + taxes", note: "" },
       ],
 
       galleryTitle: "Galerie photo",
@@ -231,7 +231,7 @@ export const translations = {
       contactTitle: "Contact",
       contactLinkLabel: "handsonintegrativetherapy@gmail.com",
 
-      footerText: "© 2018 Hands On Integrative Therapy"
+      footerText: "© 2018 Hands On Integrative Therapy",
     },
 
     recovr: {
@@ -247,33 +247,33 @@ export const translations = {
         {
           id: "vrGaming",
           title: "Jeux en réalité virtuelle",
-          desc: "Sessions immersives pour améliorer la coordination, le temps de réaction et rendre l'activité plaisante."
+          desc: "Sessions immersives pour améliorer la coordination, le temps de réaction et rendre l'activité plaisante.",
         },
         {
           id: "vrRehab",
           title: "Réadaptation en RV",
-          desc: "Entraînement en réalité virtuelle ciblé pour reconstruire les schémas de mouvement pendant la réadaptation."
+          desc: "Entraînement en réalité virtuelle ciblé pour reconstruire les schémas de mouvement pendant la réadaptation.",
         },
         {
           id: "vrRelax",
           title: "Relaxation en RV",
-          desc: "Environnements guidés en RV pour la respiration, la gestion du stress et la régulation du système nerveux."
+          desc: "Environnements guidés en RV pour la respiration, la gestion du stress et la régulation du système nerveux.",
         },
         {
           id: "spaceBooking",
           title: "Réservation de l'espace",
-          desc: "Réservez le studio pour des séances solo, de petits groupes ou des équipes avec accès à l'équipement."
+          desc: "Réservez le studio pour des séances solo, de petits groupes ou des équipes avec accès à l'équipement.",
         },
         {
           id: "slowMo",
           title: "Analyse vidéo au ralenti",
-          desc: "Capture haute fréquence pour examiner la technique et repérer les opportunités d'amélioration."
+          desc: "Capture haute fréquence pour examiner la technique et repérer les opportunités d'amélioration.",
         },
         {
           id: "biomech",
           title: "Analyse biomécanique sportive",
-          desc: "Analyse appliquée de la posture, des vecteurs de force et du timing pour améliorer la performance et réduire les risques de blessure."
-        }
+          desc: "Analyse appliquée de la posture, des vecteurs de force et du timing pour améliorer la performance et réduire les risques de blessure.",
+        },
       ],
 
       galleryTitle: "Galerie photo",
@@ -281,9 +281,9 @@ export const translations = {
       contactTitle: "Contact",
       contactLinkLabel: "recovrsports@proton.me",
 
-      footerText: "© 2024 RECOVR Sports"
-    }
-  }
+      footerText: "© 2024 RECOVR Sports",
+    },
+  },
 } as const;
 
 export type SupportedLang = keyof typeof translations;

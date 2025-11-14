@@ -2,65 +2,374 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
-body { font-family: Manrope, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; }
+/* ========== Base ======================================================= */
 
-/* helpers */
-.section{ padding-top: 5rem; padding-bottom: 5rem; }
-.container{ max-width: 1120px; margin: 0 auto; padding: 0 1rem; }
-.glass{ background: rgba(255,255,255,.72); box-shadow: 0 10px 30px rgba(2,8,23,.06); border: 1px solid rgba(2,8,23,.06); border-radius: 16px; }
-.btn{ @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 font-semibold; }
-.btn-primary{ background: linear-gradient(135deg,#1E4DD8 0%,#61B5E4 100%); color:#fff; }
-.btn-outline{ border: 1px solid #d4d8dd; color:#0A2240; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* Brand switch buttons */
-.btn-lavender{ background: linear-gradient(135deg,#8B5CF6,#C4B5FD); color:#fff; }
-.btn-gold{ background: linear-gradient(135deg,#E8C766,#D4AF37); color:#0A2240; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
-/* Force white cards on dark sections */
-.glass{ background:#ffffff !important; }
+:root {
+  /* typography */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Helvetica Neue", Arial, sans-serif;
 
-/* Elevated cards with a top accent bar, tuned for HOIT */
-.card{
+  /* spacing tokens */
+  --space-xs: 0.375rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  /* radius */
+  --radius-md: 0.9rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+
+  /* shadows */
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.25);
+  --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.35);
+
+  /* glass */
+  --glass-bg: rgba(15, 23, 42, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.06);
+
+  /* brand colours (match your existing palette) */
+  --hoit-accent: #c084fc;
+  --recovr-accent: #38bdf8;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(248, 250, 252, 0.5), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.95), #020617);
+  color: #e5e7eb;
+}
+
+/* simple utility layout for older sections */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* ========== Buttons (old styles, still used in some places) ============ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 150ms ease-out,
+    color 150ms ease-out,
+    box-shadow 150ms ease-out,
+    transform 150ms ease-out,
+    border-color 150ms ease-out;
+}
+
+.btn-black {
+  background: #020617;
+  color: #f9fafb;
+  border-color: rgba(148, 163, 184, 0.4);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+}
+
+.btn-black:hover {
+  background: #020617;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+}
+
+.btn-lavender {
+  background: linear-gradient(135deg, #c084fc, #e879f9);
+  color: #020617;
+  box-shadow: 0 18px 40px rgba(192, 132, 252, 0.45);
+}
+
+.btn-lavender:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* ========== Cards / glass (old classes still used) ===================== */
+
+.card {
+  border-radius: 1.25rem;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  padding: 1.5rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.8);
+}
+
+.card-accent-lavender {
+  border-top: 4px solid var(--hoit-accent);
+}
+
+.card-accent-blue {
+  border-top: 4px solid var(--recovr-accent);
+}
+
+.glass {
+  border-radius: 1.25rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(24px);
+}
+
+/* brand text colours */
+.text-hoit-purple {
+  color: var(--hoit-accent);
+}
+
+.text-recovr-blue {
+  color: var(--recovr-accent);
+}
+
+/* ========== New layout helpers ========================================= */
+
+/* shell for pages – keeps content centered */
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* sections that use the new system */
+.section-shell {
+  padding-top: clamp(4rem, 6vw, 5.5rem);
+  padding-bottom: clamp(4rem, 6vw, 5.5rem);
+}
+
+/* alternating backgrounds */
+.section-dark {
+  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.65), #020617);
+}
+
+.section-muted {
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617);
+}
+
+.section-light {
+  background: radial-gradient(circle at top, rgba(248, 250, 252, 0.95), #e5e7eb);
+  color: #020617;
+}
+
+/* inner wrapper */
+.section-shell .section-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ========== New cards =================================================== */
+
+.card-elevated,
+.card-soft {
   position: relative;
-  background:#fff;
-  border-radius: 18px;
-  box-shadow: 0 10px 22px rgba(2,8,23,.08), 0 3px 8px rgba(2,8,23,.06);
-}
-.card-accent-lavender::before{
-  content:"";
-  position:absolute; left:0; right:0; top:0; height:10px;
-  border-top-left-radius:18px; border-top-right-radius:18px;
-  background: linear-gradient(90deg,#8B5CF6 0%, #C4B5FD 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(26px);
 }
 
-/* Clear button that fills lavender on hover */
-.btn-ghost{
-  display:inline-flex; align-items:center; justify-content:center;
-  border:1px solid #d4d8dd; border-radius:12px;
-  padding:10px 18px; font-weight:700;
-  background:#fff; color:#0A2240; transition:all .2s ease;
-}
-.btn-ghost:hover{
-  color:#fff; border-color:transparent;
-  background: linear-gradient(135deg,#8B5CF6,#C4B5FD);
-  box-shadow: 0 10px 18px rgba(139,92,246,.22);
+.card-elevated {
+  background: linear-gradient(
+    145deg,
+    rgba(15, 23, 42, 0.98),
+    rgba(15, 23, 42, 0.92)
+  );
 }
 
-/* Elevated cards with blue accent for RECOVR */
-.card-accent-blue::before{
-  content:"";
-  position:absolute; left:0; right:0; top:0; height:10px;
-  border-top-left-radius:18px; border-top-right-radius:18px;
-  background: linear-gradient(90deg,#2B7FB9 0%, #61B5E4 100%);
+.card-soft {
+  background: rgba(15, 23, 42, 0.9);
 }
 
-/* Black filled CTA */
-.btn-black{ background:#000; color:#fff; }
-.btn-black:hover{ filter:brightness(1.05); }
-
-/* Center all section titles and give headings a soft 3D depth */
-.section h2{ text-align:center; }
-h1,h2,h3{
-  text-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 12px 24px rgba(2,8,23,0.06);
+.card-elevated::before,
+.card-soft::before {
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  top: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(96, 165, 250, 0.15),
+    rgba(244, 114, 182, 0.7),
+    rgba(129, 140, 248, 0.6)
+  );
+  opacity: 0.85;
 }
+
+/* ========== New buttons ================================================= */
+
+.btn-primary-3d {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding-inline: 1.6rem;
+  padding-block: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #f97316, #facc15);
+  color: #020617;
+  border: none;
+  box-shadow: 0 18px 35px rgba(248, 181, 0, 0.35);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out,
+    filter 160ms ease-out;
+}
+
+.btn-primary-3d:hover {
+  transform: translateY(-1px) translateZ(0);
+  filter: brightness(1.05);
+  box-shadow: 0 24px 45px rgba(248, 181, 0, 0.45);
+}
+
+.btn-primary-3d:active {
+  transform: translateY(1px);
+  box-shadow: 0 10px 25px rgba(248, 181, 0, 0.3);
+}
+
+.btn-ghost-soft {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding-inline: 1.4rem;
+  padding-block: 0.6rem;
+  font-weight: 600;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: linear-gradient(
+    145deg,
+    rgba(15, 23, 42, 0.4),
+    rgba(15, 23, 42, 0.95)
+  );
+  color: #e5e7eb;
+  backdrop-filter: blur(18px);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease-out,
+    background 160ms ease-out,
+    transform 160ms ease-out;
+}
+
+.btn-ghost-soft:hover {
+  border-color: rgba(251, 191, 36, 0.9);
+  transform: translateY(-1px);
+}
+
+/* pill badges */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: 0.2rem 0.8rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+/* ========== Typography helpers ========================================= */
+
+.display-title {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.85),
+    0 0 22px rgba(248, 250, 252, 0.08);
+}
+
+.subheading {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(148, 163, 184, 0.9);
+}
+
+/* HOIT accent underline */
+.hoit-underline {
+  box-shadow: 0 12px 0 0 rgba(192, 132, 252, 0.22);
+}
+
+/* RECOVR accent underline */
+.recovr-underline {
+  box-shadow: 0 12px 0 0 rgba(56, 189, 248, 0.28);
+}
+
+/* ========== Motion ====================================================== */
+
+@keyframes fade-up-soft {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-soft {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up-soft {
+  animation: fade-up-soft 520ms ease-out both;
+}
+
+.animate-fade-in-soft {
+  animation: fade-in-soft 420ms ease-out both;
+}
+
+/* staggered grid helper */
+.staggered > * {
+  animation: fade-up-soft 520ms ease-out both;
+}
+
+.staggered > *:nth-child(1) { animation-delay: 40ms; }
+.staggered > *:nth-child(2) { animation-delay: 80ms; }
+.staggered > *:nth-child(3) { animation-delay: 120ms; }
+.staggered > *:nth-child(4) { animation-delay: 160ms; }
+.staggered > *:nth-child(5) { animation-delay: 200ms; }
+.staggered > *:nth-child(6) { animation-delay: 240ms; }
+.staggered > *:nth-child(7) { animation-delay: 280ms; }
+.staggered > *:nth-child(8) { animation-delay: 320ms; }
