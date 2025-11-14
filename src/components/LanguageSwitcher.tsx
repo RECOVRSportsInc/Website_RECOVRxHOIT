@@ -1,41 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { translatePage, getLang, setLang } from "../i18n/translator";
-
-const LANGS = [
-  { code: "en", label: "English" },
-  { code: "fr", label: "Français" },
-];
+// src/components/LanguageSwitcher.tsx
+import { useI18n } from "../i18n/useI18n";
 
 export default function LanguageSwitcher() {
-  const [lang, setLangState] = useState(getLang());
+  const { lang, setLang } = useI18n();
 
-  useEffect(() => {
-    // translate immediately on mount to the last chosen language
-    translatePage(lang);
-  }, []);
-
-  const onChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const next = e.target.value as "en" | "fr";
-    setLang(next);
-    setLangState(next);
-    await translatePage(next);
-  };
+  const isEn = lang === "en";
 
   return (
-    <label className="inline-flex items-center gap-2 text-white" data-no-translate>
-      <span className="sr-only">Language</span>
-      <select
-        value={lang}
-        onChange={onChange}
-        className="bg-black text-white border border-white/30 rounded-md px-2 py-1 focus:outline-none"
-        aria-label="Language"
-      >
-        {LANGS.map(l => (
-          <option key={l.code} value={l.code} className="text-black">
-            {l.label}
-          </option>
-        ))}
-      </select>
-    </label>
+    <div className="flex items-center">
+      <div className="inline-flex items-center rounded-full border border-white/60 bg-black/60 px-1 py-0.5 text-xs">
+        <button
+          type="button"
+          onClick={() => setLang("en")}
+          className={
+            "px-2 py-1 rounded-full transition-colors " +
+            (isEn
+              ? "bg-yellow-400 text-black font-semibold"
+              : "text-white/80 hover:text-white")
+          }
+        >
+          EN
+        </button>
+        <button
+          type="button"
+          onClick={() => setLang("fr")}
+          className={
+            "px-2 py-1 rounded-full transition-colors " +
+            (!isEn
+              ? "bg-yellow-400 text-black font-semibold"
+              : "text-white/80 hover:text-white")
+          }
+        >
+          FR
+        </button>
+      </div>
+    </div>
   );
 }

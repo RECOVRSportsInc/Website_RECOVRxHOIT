@@ -1,4 +1,3 @@
-import React from "react";
 import { useBrand } from "../brand/BrandContext";
 
 export default function Home() {
