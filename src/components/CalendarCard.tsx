@@ -1,4 +1,3 @@
-import React from "react";
 
 type Props = {
   /** Google “appointments/schedules/...” embed URL (optional) */

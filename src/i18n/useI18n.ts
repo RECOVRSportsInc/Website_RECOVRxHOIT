@@ -1,16 +1,26 @@
 // src/i18n/useI18n.ts
+import { useLanguageStore } from "../stores/languageStore";
 import { translations } from "./translations";
-import { useLanguageStore, type Language } from "../stores/languageStore";
 
-type TranslationShape = (typeof translations)["en"];
+export type AppLanguage = "en" | "fr";
 
+/**
+ * Simple i18n hook used across the site.
+ * - lang: "en" | "fr"
+ * - t: translations for the current language
+ * - setLang: change language
+ */
 export function useI18n() {
-  // read only the language from the store, strongly typed as "en" | "fr"
-  const lang: Language = useLanguageStore((state) => state.language);
+  const { language, setLanguage } = useLanguageStore();
 
-  // tell TS that indexing translations with "lang" is safe,
-  // and that the shape is the same as the "en" object
-  const t = translations[lang as keyof typeof translations] as TranslationShape;
+  const lang: AppLanguage = language;
+  const t = translations[lang];
 
-  return { t, lang };
+  return {
+    lang,
+    t,
+    setLang: setLanguage,
+  };
 }
+
+export type UseI18nReturn = ReturnType<typeof useI18n>;

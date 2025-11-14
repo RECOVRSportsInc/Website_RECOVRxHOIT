@@ -8,6 +8,7 @@ export function getLang(): "en" | "fr" {
   const v = (localStorage.getItem(STORAGE_KEY) || "en").toLowerCase();
   return v === "fr" ? "fr" : "en";
 }
+
 export function setLang(l: "en" | "fr") {
   localStorage.setItem(STORAGE_KEY, l);
 }
@@ -17,18 +18,12 @@ function shouldSkip(el: Element): boolean {
   // do not translate anything carrying this attribute
   if (el.hasAttribute("data-no-translate")) return true;
 
-  // inputs, code blocks, preformatted, anchor hrefs, logo images etc
+  // code blocks, scripts, styles etc
   const tag = el.tagName.toLowerCase();
   if (["code", "pre", "script", "style"].includes(tag)) return true;
 
   return false;
 }
-
-// very small dictionary base (you can expand later)
-const DICT: Record<string, Record<string, string>> = {
-  en: {},
-  fr: {},
-};
 
 // naive phrase translation (can later hook to an API or improve dictionaries)
 function translateText(text: string, to: "en" | "fr") {
@@ -46,7 +41,7 @@ function translateText(text: string, to: "en" | "fr") {
     .replace(/\bView Services\b/gi, "Voir les services")
     .replace(/\bExplore Programs\b/gi, "Explorer les programmes")
     .replace(/\bPrivacy Policy\b/gi, "Politique de confidentialité")
-    .replace(/\bCancellation Policy\b/gi, "Politique d’annulation")
+    .replace(/\bCancellation Policy\b/gi, "Politique d'annulation")
     .replace(/\bour contact form\b/gi, "notre formulaire de contact");
 
   // post-fix currency: if any £ slipped in, restore $
@@ -63,15 +58,19 @@ function walkAndTranslate(root: Element, to: "en" | "fr") {
       if (!parent) return NodeFilter.FILTER_REJECT;
       if (shouldSkip(parent)) return NodeFilter.FILTER_REJECT;
       // skip email addresses and urls
-      if (/@|https?:\/\//.test(node.nodeValue || "")) return NodeFilter.FILTER_REJECT;
+      if (/@|https?:\/\//.test(node.nodeValue || "")) {
+        return NodeFilter.FILTER_REJECT;
+      }
       return NodeFilter.FILTER_ACCEPT;
     },
   });
 
   const nodes: Text[] = [];
-  while (walker.nextNode()) nodes.push(walker.currentNode as Text);
+  while (walker.nextNode()) {
+    nodes.push(walker.currentNode as Text);
+  }
 
-  nodes.forEach(t => {
+  nodes.forEach((t) => {
     if (!t.nodeValue) return;
     t.nodeValue = translateText(t.nodeValue, to);
   });

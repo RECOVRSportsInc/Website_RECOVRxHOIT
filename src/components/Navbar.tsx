@@ -1,36 +1,37 @@
-// src/components/Navbar.tsx
 import { useBrand } from "../brand/BrandContext";
 import BrandSwitch from "./BrandSwitch";
-import LanguageToggle from "./LanguageToggle";
+import LanguageSwitcher from "./LanguageSwitcher";
 import { useI18n } from "../i18n/useI18n";
 
 export default function Navbar() {
   const { brand } = useBrand();
-  const { t } = useI18n();
   const base = brand.key === "hoit" ? "/hoit" : "/";
 
-  const isHoit = brand.key === "hoit";
+  const { t } = useI18n();
+  const navTexts = (t as any).nav || {};
 
-  // define which anchors we show per brand, and lookup their translated labels from t.nav
-  const links: { href: string; key: keyof typeof t.nav }[] = isHoit
-    ? [
-        { href: "#services", key: "services" },
-        { href: "#pricing", key: "pricing" },
-        { href: "#gallery", key: "gallery" },
-        { href: "#privacy", key: "privacy" },
-        { href: "#cancellation", key: "cancellation" },
-        { href: "#contact", key: "contact" },
-      ]
-    : [
-        { href: "#programs", key: "programs" },
-        { href: "#gallery", key: "gallery" },
-        { href: "#contact", key: "contact" },
-      ];
+  // Map hrefs -> translation keys so we do not have to rewrite BrandContext
+  function getTranslatedLabel(href: string, fallback: string): string {
+    // Normalize just in case: remove base, keep hash part
+    const h = href.toLowerCase();
+
+    if (h.endsWith("#services")) return navTexts.services ?? fallback;
+    if (h.endsWith("#pricing")) return navTexts.pricing ?? fallback;
+    if (h.endsWith("#gallery")) return navTexts.gallery ?? fallback;
+    if (h.endsWith("#privacy")) return navTexts.privacy ?? fallback;
+    if (h.endsWith("#cancellation")) return navTexts.cancellation ?? fallback;
+    if (h.endsWith("#contact")) return navTexts.contact ?? fallback;
+    if (h.endsWith("#programs")) return navTexts.programs ?? fallback;
+
+    // If we ever add more keys to translations.nav, we can extend here
+
+    return fallback;
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black text-white border-b border-black">
       <div className="container flex items-center justify-between py-3">
-        {/* Logo / brand */}
+        {/* Logo / brand name */}
         <a href={base} className="no-underline flex items-center">
           {brand.logoSrc ? (
             <img
@@ -51,23 +52,30 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center space-x-6">
-          {links.map((item) => (
-            <a
-              key={item.href}
-              href={`${base}${item.href === "#" ? "" : item.href}`}
-              className="text-white/90 hover:text-white no-underline"
-            >
-              {t.nav[item.key]}
-            </a>
-          ))}
+          {brand.nav.map((item) => {
+            const href = `${base}${item.href === "#" ? "" : item.href}`;
+            const label = getTranslatedLabel(item.href, item.label);
+            return (
+              <a
+                key={item.href}
+                href={href}
+                className="text-white/90 hover:text-white no-underline"
+              >
+                {label}
+              </a>
+            );
+          })}
 
-          <LanguageToggle />
+          {/* Language toggle */}
+          <LanguageSwitcher />
+
+          {/* Brand switch (HOIT <-> RECOVR) */}
           <BrandSwitch />
         </nav>
 
-        {/* Mobile: language + brand switch */}
+        {/* Mobile: language + brand switch side by side */}
         <div className="md:hidden flex items-center gap-3">
-          <LanguageToggle />
+          <LanguageSwitcher />
           <BrandSwitch />
         </div>
       </div>
