@@ -2,18 +2,19 @@
 import { useLanguageStore } from "../stores/languageStore";
 import { translations } from "./translations";
 
-export type AppLanguage = "en" | "fr";
+export type SupportedLang = keyof typeof translations;
+export type AppTranslations = (typeof translations)[SupportedLang];
 
-/**
- * Simple i18n hook used across the site.
- * - lang: "en" | "fr"
- * - t: translations for the current language
- * - setLang: change language
- */
+// Make sure we only ever use "en" or "fr" at runtime
+function normalizeLang(language: string | undefined): SupportedLang {
+  if (language === "fr") return "fr";
+  return "en";
+}
+
 export function useI18n() {
   const { language, setLanguage } = useLanguageStore();
 
-  const lang: AppLanguage = language;
+  const lang = normalizeLang(language);
   const t = translations[lang];
 
   return {
