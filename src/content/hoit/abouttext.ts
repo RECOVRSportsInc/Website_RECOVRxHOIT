@@ -1,0 +1,18 @@
+// src/content/hoit/abouttext.ts
+
+// English version of your About Me.
+// Replace ONLY the string below (keep the export name the same).
+export const HOIT_ABOUT_EN = `
+Steven Warsh is a Registered Massage Therapist with the AMQ and a Certified Athletic Therapist (AT) with CATA living in Montreal, Quebec who takes an integrative, holistic approach to therapy. He began his training at McGill University where he completed a Bachelor of Science in Kinesiology and fell in love with Athletic Therapy during his time with the Varsity Rugby Teams there. He then completed his Bachelor of AT, with distinction, from Concordia University. He graduated from the Ontario College of Health and Technology and acquired his certificate of registration to the College of Massage Therapist of Ontario (CMTO). He has worked with Baseball Canada, in the Greater Toronto Hockey League with the North York Rangers AAA Team, OHL/OHF Program of Excellence and the Team Ontario Volleyball High Performance Elite Mens Team as well as Team Ontario Box Lacrosse.He has since moved back to Montreal, and is now a registered LEVEL 3 Massage Therapist with the Association des Massothérapeutes du Québec (AMQ), the highest ranking massage therapist level. Steven works in private practice at Clinique MV in Westmount, Quebec, as well as one-on-one consultations. 
+
+Steven has been afforded the opportunity to work with patients of all ages and skill levels in almost every sport, from the grandmother who just wants to improve her balance, to the elite, national level athlete who needs that extra drive. His goal is to look at the whole body and not just where you are feeling pain. Often times, the pain you are experiencing is a result of something up or down the chain in the body and if not addressed, will return later costing the patient hundreds of extra dollars. Due to Athletic Therapist's on-field work and the requirements to be able to asses and evaluate athletes in a very quick timeframe, ATs like Steven specialize in accurately assessing and deciding on what your injury is. It isn't a perfect science, but ATs are some of the best healthcare professionals at coming up with an accurate clinical impression which is vital for the patient. Steven has since added Massage Therapy to his skillset, and specializes in deep tissue, relaxation and fascial work. His ability to integrate all of his knowledge from Kinesiology, Athletic Therapy and Massage Therapy allows the client to receive preventative and rehabilitative treatments as needed. If that wasn't enough, during the quarantine, Steven was also able to become a certified TRX Suspension Trainer which just adds even more tools to his vast toolbox. 
+
+After working with the 2018 U18 Baseball Canada team in Florida, Team Ontario Elite Volleyball and Lacrosse Teams, he has gained an even greater appreciation for elite level athletes and the rigours that the body goes through. As an elite baseball player, competitive hockey, tennis, volleyball and golfer in his youth, he relates to many of the patients he sees and his vast knowledge of sports allows for a more specific and impactful program to be designed and implemented. Utilizing the various specialties he has learned over his training affords the patient a thorough and all-encompassing rehab and treatment. One thing you can guarantee you will get from seeing Steven is 110% effort. He is a dedicated, honest and an enthusiastic hard worker who would love to see you in clinic anytime. 
+
+`;
+
+// Optional: if one day you want a French version, you can fill this too.
+// For now we just duplicate English so nothing breaks.
+export const HOIT_ABOUT_FR = `
+PUT YOUR FRENCH ABOUT ME HERE LATER (OR LEAVE AS IS FOR NOW).
+`;

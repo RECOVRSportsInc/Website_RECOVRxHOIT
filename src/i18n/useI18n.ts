@@ -1,27 +1,21 @@
 // src/i18n/useI18n.ts
-import { useLanguageStore } from "../stores/languageStore";
-import { translations } from "./translations";
 
-export type SupportedLang = keyof typeof translations;
-export type AppTranslations = (typeof translations)[SupportedLang];
+import { create } from "zustand";
+import { getLang, setLang as persistLang, type Lang } from "./translator";
 
-// Make sure we only ever use "en" or "fr" at runtime
-function normalizeLang(language: string | undefined): SupportedLang {
-  if (language === "fr") return "fr";
-  return "en";
-}
+type I18nApi = {
+  lang: Lang;
+  setLang: (lang: Lang) => void;
+};
+
+const useI18nStore = create<I18nApi>((set) => ({
+  lang: typeof window === "undefined" ? "en" : getLang(),
+  setLang: (lang) => {
+    set({ lang });
+    persistLang(lang);
+  },
+}));
 
 export function useI18n() {
-  const { language, setLanguage } = useLanguageStore();
-
-  const lang = normalizeLang(language);
-  const t = translations[lang];
-
-  return {
-    lang,
-    t,
-    setLang: setLanguage,
-  };
+  return useI18nStore();
 }
-
-export type UseI18nReturn = ReturnType<typeof useI18n>;
