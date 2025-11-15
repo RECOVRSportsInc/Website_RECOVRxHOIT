@@ -373,3 +373,20 @@ body {
 .staggered > *:nth-child(6) { animation-delay: 240ms; }
 .staggered > *:nth-child(7) { animation-delay: 280ms; }
 .staggered > *:nth-child(8) { animation-delay: 320ms; }
+
+/* Subtle 3D hover for cards and photo containers */
+.card,
+.glass {
+  transition:
+    transform 200ms ease-out,
+    box-shadow 200ms ease-out,
+    border-color 200ms ease-out,
+    background 200ms ease-out;
+  transform-origin: center;
+}
+
+.card:hover,
+.glass:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
