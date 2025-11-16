@@ -376,7 +376,8 @@ body {
 
 /* Subtle 3D hover for cards and photo containers */
 .card,
-.glass {
+.glass,
+.recovr-card {
   transition:
     transform 200ms ease-out,
     box-shadow 200ms ease-out,
@@ -386,7 +387,8 @@ body {
 }
 
 .card:hover,
-.glass:hover {
+.glass:hover,
+.recovr-card:hover {
   transform: translateY(-4px) scale(1.01);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
 }

@@ -5,31 +5,58 @@ import { HOIT_ABOUT_EN, HOIT_ABOUT_FR } from "./abouttext";
 /* HERO */
 export function Hero() {
   return (
-    <section className="section-shell section-muted pt-28 md:pt-32">
-      <div className="section-inner animate-fade-up-soft">
-        <p className="subheading mb-4" data-no-translate>
-          Hands On Integrative Therapy
-        </p>
+    <section className="relative overflow-hidden pt-28 pb-24 bg-hoit-purple">
+      {/* Faded clinic photo in the background */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <img
+          src="/img/hoit-clinic-1.jpg" // put your clinic photo here
+          alt=""
+          className="w-full h-full object-cover opacity-60 blur-sm"
+          data-no-translate
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-hoit-purple/90 via-hoit-purple/80 to-[#050816]/90" />
+      </div>
 
-        <h1 className="display-title text-4xl md:text-6xl text-white leading-tight">
-          <span className="recovr-underline text-hoit-purple">
-            Hands On
-          </span>{" "}
-          Integrative Therapy
-        </h1>
+      {/* Subtle glow blobs */}
+      <div
+        className="pointer-events-none absolute -left-40 -bottom-40 h-80 w-80 rounded-full bg-hoit-mint/20 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-[#ff7cf5]/15 blur-3xl"
+        aria-hidden="true"
+      />
 
-        <p className="mt-5 max-w-2xl text-base md:text-lg text-slate-200/80">
-          Athletic therapy and massage therapy services for all ages with an
-          integrative, hands on approach to recovery and performance.
-        </p>
+      {/* Content card */}
+      <div className="relative container section max-w-5xl">
+        <div className="inline-flex items-center px-4 py-1 mb-6 text-[0.7rem] tracking-[0.2em] uppercase rounded-full border border-white/15 bg-black/20 backdrop-blur-md text-white/70">
+          <span data-no-translate>Hands On Integrative Therapy</span>
+        </div>
 
-        <div className="mt-8 flex flex-wrap gap-4">
-          <a href="#services" className="btn btn-black">
-            View Services
-          </a>
-          <a href="#pricing" className="btn btn-lavender">
-            Book A Session
-          </a>
+        <div className="rounded-3xl bg-slate-900/85 border border-white/10 backdrop-blur-xl p-8 md:p-10 shadow-[0_40px_120px_rgba(15,23,42,0.9)]">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-[0_14px_40px_rgba(0,0,0,0.6)]">
+            <span className="text-[#28faad]">Hands On</span>{" "}
+            <span>Integrative Therapy</span>
+          </h1>
+
+          <p className="mt-5 max-w-2xl text-base md:text-lg text-slate-200/85">
+            Athletic therapy and massage therapy services for all ages with an
+            integrative, hands on approach to recovery and performance.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a href="#services" className="btn btn-black">
+              View Services
+            </a>
+
+            <a
+              href="#pricing"
+              className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold shadow-[0_18px_60px_rgba(40,250,173,0.55)]"
+              style={{ backgroundColor: "#28faad", color: "#000" }}
+            >
+              Book A Session
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -65,12 +92,15 @@ function Services() {
       <div className="container">
         <h2 className="text-3xl font-bold text-hoit-purple mb-6">Services</h2>
         <div className="grid sm:grid-cols-2 gap-6">
-         {items.map((it) => (
-          <div key={it.title} className="card card-accent-lavender p-5">
-            <h3 className="font-semibold text-white">{it.title}</h3>
-           <p className="text-gray-300 mt-1">{it.desc}</p>
-          </div>
-        ))}
+          {items.map((it) => (
+            <div
+              key={it.title}
+              className="card card-accent-lavender p-5 hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+            >
+              <h3 className="font-semibold text-white">{it.title}</h3>
+              <p className="text-white/80 mt-1">{it.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -87,17 +117,20 @@ function Pricing() {
     { name: "Phone Consult", price: "$50 + tax", note: "" },
   ];
   return (
-    <section id="pricing" className="section">
+    <section id="pricing" className="section bg-hoit-purple">
       <div className="container">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">Pricing</h2>
+        <h2 className="text-3xl font-bold text-hoit-mint mb-6">Pricing</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           {plans.map((p) => (
-            <div key={p.name} className="card card-accent-lavender p-6">
-              <div className="text-sm text-gray-500">{p.name}</div>
+            <div
+              key={p.name}
+              className="card card-accent-lavender p-6 hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+            >
+              <div className="text-sm text-white/80">{p.name}</div>
               <div className="mt-1 text-3xl font-extrabold text-hoit-purple">
                 {p.price}
               </div>
-              {p.note && <div className="text-gray-600 mt-1">{p.note}</div>}
+              {p.note && <div className="text-white/70 mt-1">{p.note}</div>}
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
                 target="_blank"
@@ -123,7 +156,10 @@ function Gallery() {
         <h2 className="text-3xl font-bold text-hoit-purple mb-6">Photo Gallery</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {imgs.map((src, i) => (
-            <div key={i} className="glass overflow-hidden">
+            <div
+              key={i}
+              className="glass overflow-hidden rounded-3xl hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+            >
               <img
                 src={src}
                 alt={`HOIT photo ${i + 1}`}
@@ -152,16 +188,16 @@ function About() {
   const aboutText = lang === "fr" ? HOIT_ABOUT_FR : HOIT_ABOUT_EN;
 
   return (
-    <section id="about" className="section">
+    <section id="about" className="section bg-hoit-purple">
       <div className="container">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
+        <h2 className="text-3xl font-bold text-hoit-mint mb-4">About Me</h2>
         <div
-          className="glass p-6 text-gray-700 leading-relaxed space-y-4"
+          className="glass p-6 text-white leading-relaxed space-y-4"
           data-no-translate
         >
           {aboutText
             .trim()
-            .split(/\n\s*\n/) // split on blank lines into paragraphs
+            .split(/\n\s*\n/)
             .map((para, idx) => (
               <p key={idx}>{para.trim()}</p>
             ))}
@@ -176,17 +212,19 @@ function PrivacyPolicy() {
   return (
     <section id="privacy" className="section bg-black">
       <div className="container">
-        <h2 className="text-2xl font-bold text-hoit-purple mb-3">Privacy Policy</h2>
-        <div className="glass p-6 text-gray-700 space-y-3">
+        <h2 className="text-2xl font-bold text-hoit-purple mb-3">
+          Privacy Policy
+        </h2>
+        <div className="glass p-6 text-white space-y-3">
           <p>
-            We collect only the information needed to book and deliver services, such as
-            your name, contact details, and relevant health history that you choose to
-            share. Your information is used to provide care, manage appointments, and
-            communicate with you.
+            We collect only the information needed to book and deliver services, such
+            as your name, contact details, and relevant health history that you choose
+            to share. Your information is used to provide care, manage appointments,
+            and communicate with you.
           </p>
           <p>
-            We keep records securely and do not sell personal data. You may request a copy
-            or correction of your information at any time by completing{" "}
+            We keep records securely and do not sell personal data. You may request a
+            copy or correction of your information at any time by completing{" "}
             <a
               className="text-hoit-purple"
               href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
@@ -211,7 +249,7 @@ function CancellationPolicy() {
         <h2 className="text-2xl font-bold text-hoit-purple mb-3">
           Cancellation Policy
         </h2>
-        <div className="glass p-6 text-gray-700 space-y-3">
+        <div className="glass p-6 text-white space-y-3">
           <p>
             Please provide at least 24 hours notice to cancel or reschedule. Late
             cancellations or no shows may incur a fee up to the full session rate.
@@ -242,7 +280,7 @@ function Contact() {
         <div className="card card-accent-lavender p-6">
           <h2 className="text-2xl font-bold text-hoit-purple mb-2">Contact</h2>
           <a
-            className="text-hoit-purple hover:underline"
+            className="text-hoit-mint hover:underline"
             href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
             target="_blank"
             rel="noopener"

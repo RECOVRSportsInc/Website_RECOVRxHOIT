@@ -1,6 +1,7 @@
 // src/components/Navbar.tsx
 import { useBrand } from "../brand/BrandContext";
 import BrandSwitch from "./BrandSwitch";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const { brand } = useBrand();
@@ -17,11 +18,6 @@ export default function Navbar() {
               style={{
                 ...(brand.logoStyle || {}),
                 height: (brand.logoStyle?.height as number) || 28,
-                // add white outline / glow for RECOVR logo only
-                filter:
-                  brand.key === "recovr"
-                    ? "drop-shadow(0 0 3px rgba(255,255,255,0.95))"
-                    : undefined,
               }}
               className="block"
             />
@@ -32,20 +28,22 @@ export default function Navbar() {
           )}
         </a>
 
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6">
           {brand.nav.map((item) => (
             <a
               key={item.href}
               href={`${base}${item.href === "#" ? "" : item.href}`}
-              className="text-white/90 hover:text-white no-underline"
+              className="text-white/90 hover:text-white no-underline text-sm font-medium"
             >
               {item.label}
             </a>
           ))}
+          <LanguageSwitcher />
           <BrandSwitch />
         </nav>
 
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-3">
+          <LanguageSwitcher />
           <BrandSwitch />
         </div>
       </div>

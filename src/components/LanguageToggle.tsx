@@ -1,48 +1,42 @@
 // src/components/LanguageToggle.tsx
-
-import { useState, useEffect } from "react";
-import { getLang, setLang as storeLang, translatePage, type Lang } from "../i18n/translator";
+import { useI18n } from "../i18n/useI18n";
+import type { Lang } from "../i18n/translator";
 
 export default function LanguageToggle() {
-  const [lang, setLang] = useState<Lang>("en");
+  const { lang, setLang } = useI18n();
+  const isEn = lang === "en";
 
-  // On mount, sync with localStorage
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setLang(getLang());
-    }
-  }, []);
-
-  const isFr = lang === "fr";
-
-  const handleClick = () => {
-    const next: Lang = isFr ? "en" : "fr";
-
-    // update component state
+  const switchTo = (next: Lang) => {
+    if (next === lang) return;
     setLang(next);
-    // remember choice in localStorage
-    storeLang(next);
-
-    if (next === "fr") {
-      // English → French: translate DOM in place
-      translatePage("fr");
-    } else {
-      // French → English: reload original English React content
-      window.location.reload();
-    }
   };
 
   return (
-    <button
-      type="button"
-      onClick={handleClick}
-      className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold
-                 border border-amber-300 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500
-                 text-slate-900 shadow-md hover:brightness-110"
+    <div
+      className="inline-flex items-center rounded-full bg-gradient-gold px-3 py-1 text-xs font-semibold shadow-soft-lg"
+      aria-label="Language toggle"
     >
-      <span className={!isFr ? "font-bold" : "opacity-70"}>EN</span>
-      <span className="mx-1 opacity-70">/</span>
-      <span className={isFr ? "font-bold" : "opacity-70"}>FR</span>
-    </button>
+      <button
+        type="button"
+        className={
+          "px-2 py-0.5 rounded-full transition-colors " +
+          (isEn ? "bg-black text-white" : "bg-transparent text-black")
+        }
+        onClick={() => switchTo("en")}
+      >
+        EN
+      </button>
+      <span className="px-1 text-black/70">/</span>
+      <button
+        type="button"
+        className={
+          "px-2 py-0.5 rounded-full transition-colors " +
+          (!isEn ? "bg-black text-white" : "bg-transparent text-black")
+        }
+        onClick={() => switchTo("fr")}
+      >
+        FR
+      </button>
+    </div>
   );
 }

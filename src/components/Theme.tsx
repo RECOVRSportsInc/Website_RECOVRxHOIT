@@ -1,10 +1,12 @@
-import React from "react";
+// src/components/Theme.tsx
+import type { ReactNode } from "react";
+import { I18nProvider } from "../i18n/useI18n";
+import { BrandProvider } from "../brand/BrandContext";
 
-export default function Theme({ children }: { children: React.ReactNode }) {
-  // Baby-blue page background for both HOIT and RECOVR
+export default function Theme({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#EAF4FF]">
-      {children}
-    </div>
+    <I18nProvider>
+      <BrandProvider>{children}</BrandProvider>
+    </I18nProvider>
   );
 }

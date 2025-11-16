@@ -1,16 +1,24 @@
+// src/pages/Home.tsx
+import type { ReactNode } from "react";
 import { useBrand } from "../brand/BrandContext";
+import * as Hoit from "../content/hoit";
+import * as Recovr from "../content/recovr";
+
+type SectionComponent = () => ReactNode;
 
 export default function Home() {
   const { brand } = useBrand();
-  const Hero = brand.Hero;
-  const Footer = brand.Footer;
+  const Content = brand.key === "hoit" ? Hoit : Recovr;
+
+  const Sections = Content.Sections as SectionComponent[];
+
   return (
-    <>
-      <Hero />
-      {brand.Sections.map((S, i) => (
-        <S key={i} />
+    <main className="pt-20">
+      <Content.Hero />
+      {Sections.map((Section, idx) => (
+        <Section key={idx} />
       ))}
-      <Footer />
-    </>
+      <Content.Footer />
+    </main>
   );
 }

@@ -1,5 +1,7 @@
 // functions/[[path]].ts
-export const onRequest = async ({ request, next }) => {
+// SPA fallback: if Cloudflare serves 404 for a non-file path, return index.html
+
+export const onRequest = async ({ request, next }: any) => {
   const res = await next();
 
   const url = new URL(request.url);
@@ -11,9 +13,9 @@ export const onRequest = async ({ request, next }) => {
     return new Response(await indexResp.text(), {
       status: 200,
       headers: {
-    "content-type": "text/html; charset=utf-8",
-    "cache-control": "no-cache"
-    }
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "no-cache",
+      },
     });
   }
 
