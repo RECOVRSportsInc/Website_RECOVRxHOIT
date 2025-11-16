@@ -19,7 +19,7 @@ export function Hero() {
 
       {/* Subtle glow blobs */}
       <div
-        className="pointer-events-none absolute -left-40 -bottom-40 h-80 w-80 rounded-full bg-[hoit-mint]/20 blur-3xl"
+        className="pointer-events-none absolute -left-40 -bottom-40 h-80 w-80 rounded-full bg-hoit-mint/20 blur-3xl"
         aria-hidden="true"
       />
       <div
@@ -63,7 +63,7 @@ export function Hero() {
   );
 }
 
-/* SERVICES on black, lavender heading */
+/* SERVICES on white, lavender cards */
 function Services() {
   const items = [
     {
@@ -151,7 +151,7 @@ function Pricing() {
   );
 }
 
-/* GALLERY on black, 9 tiles, hide failed images, no helper text */
+/* GALLERY on white */
 function Gallery() {
   const imgs = Array.from({ length: 9 }, (_, i) => `/photos/hoit/${i + 1}.jpg`);
   return (
@@ -211,7 +211,7 @@ function About() {
   );
 }
 
-/* POLICIES on black, lavender headings */
+/* POLICIES */
 function PrivacyPolicy() {
   return (
     <section id="privacy" className="section bg-white">
