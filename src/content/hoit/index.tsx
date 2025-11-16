@@ -5,16 +5,16 @@ import { HOIT_ABOUT_EN, HOIT_ABOUT_FR } from "./abouttext";
 /* HERO */
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-24 bg-hoit-purple">
+    <section className="relative overflow-hidden pt-28 pb-24 bg-[#3db0fc]">
       {/* Faded clinic photo in the background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
           src="/img/hoit-clinic-1.jpg" // put your clinic photo here
           alt=""
-          className="w-full h-full object-cover opacity-60 blur-sm"
+          className="w-full h-full object-cover"
           data-no-translate
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-hoit-purple/90 via-hoit-purple/80 to-[#050816]/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#3db0fc]/60 via-[#150816]/90 to-[#3db0fc]/60" />
       </div>
 
       {/* Subtle glow blobs */}
@@ -35,7 +35,7 @@ export function Hero() {
 
         <div className="rounded-3xl bg-slate-900/85 border border-white/10 backdrop-blur-xl p-8 md:p-10 shadow-[0_40px_120px_rgba(15,23,42,0.9)]">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-[0_14px_40px_rgba(0,0,0,0.6)]">
-            <span className="text-[#28faad]">Hands On</span>{" "}
+            <span className="text-[#3db0fc]">Hands On</span>{" "}
             <span>Integrative Therapy</span>
           </h1>
 
@@ -52,7 +52,7 @@ export function Hero() {
             <a
               href="#pricing"
               className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold shadow-[0_18px_60px_rgba(40,250,173,0.55)]"
-              style={{ backgroundColor: "#28faad", color: "#000" }}
+              style={{ backgroundColor: "#3db0fc", color: "#000" }}
             >
               Book A Session
             </a>
@@ -63,7 +63,7 @@ export function Hero() {
   );
 }
 
-/* SERVICES on black, lavender heading */
+/* SERVICES on white, lavender cards */
 function Services() {
   const items = [
     {
@@ -88,9 +88,9 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="section bg-black">
+    <section id="services" className="section bg-white">
       <div className="container">
-        <h2 className="text-3xl font-bold text-hoit-purple mb-6">Services</h2>
+        <h2 className="text-3xl font-bold text-hoit-purple">Services</h2>
         <div className="grid sm:grid-cols-2 gap-6">
           {items.map((it) => (
             <div
@@ -110,16 +110,20 @@ function Services() {
 /* PRICING */
 function Pricing() {
   const plans = [
-    { name: "AT / Massage Consult", price: "$150 + tax", note: "New clients only" },
+    {
+      name: "AT / Massage Consult",
+      price: "$150 + tax",
+      note: "First appointment only for new clients",
+    },
     { name: "AT / Massage 60 Minutes", price: "$130 + tax", note: "" },
     { name: "AT / Massage 45 Minutes", price: "$115 + tax", note: "" },
     { name: "AT / Massage 30 Minutes", price: "$100 + tax", note: "" },
     { name: "Phone Consult", price: "$50 + tax", note: "" },
   ];
   return (
-    <section id="pricing" className="section bg-hoit-purple">
+    <section id="pricing" className="section bg-[#3db0fc]">
       <div className="container">
-        <h2 className="text-3xl font-bold text-hoit-mint mb-6">Pricing</h2>
+        <h2 className="text-3xl font-bold text-black ">Pricing</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           {plans.map((p) => (
             <div
@@ -147,11 +151,11 @@ function Pricing() {
   );
 }
 
-/* GALLERY on black, 9 tiles, hide failed images, no helper text */
+/* GALLERY on white */
 function Gallery() {
   const imgs = Array.from({ length: 9 }, (_, i) => `/photos/hoit/${i + 1}.jpg`);
   return (
-    <section id="gallery" className="section bg-black">
+    <section id="gallery" className="section bg-white">
       <div className="container">
         <h2 className="text-3xl font-bold text-hoit-purple mb-6">Photo Gallery</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -188,9 +192,9 @@ function About() {
   const aboutText = lang === "fr" ? HOIT_ABOUT_FR : HOIT_ABOUT_EN;
 
   return (
-    <section id="about" className="section bg-hoit-purple">
+    <section id="about" className="section bg-[#3db0fc]">
       <div className="container">
-        <h2 className="text-3xl font-bold text-hoit-mint mb-4">About Me</h2>
+        <h2 className="text-3xl font-bold text-black">About Me</h2>
         <div
           className="glass p-6 text-white leading-relaxed space-y-4"
           data-no-translate
@@ -207,12 +211,12 @@ function About() {
   );
 }
 
-/* POLICIES on black, lavender headings */
+/* POLICIES */
 function PrivacyPolicy() {
   return (
-    <section id="privacy" className="section bg-black">
+    <section id="privacy" className="section bg-white">
       <div className="container">
-        <h2 className="text-2xl font-bold text-hoit-purple mb-3">
+        <h2 className="text-2xl font-bold text-hoit-purple">
           Privacy Policy
         </h2>
         <div className="glass p-6 text-white space-y-3">
@@ -244,9 +248,9 @@ function PrivacyPolicy() {
 
 function CancellationPolicy() {
   return (
-    <section id="cancellation" className="section bg-black">
+    <section id="cancellation" className="section bg-[#3db0fc]">
       <div className="container">
-        <h2 className="text-2xl font-bold text-hoit-purple mb-3">
+        <h2 className="text-2xl font-bold text-black">
           Cancellation Policy
         </h2>
         <div className="glass p-6 text-white space-y-3">

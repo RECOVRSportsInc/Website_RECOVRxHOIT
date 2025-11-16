@@ -2,38 +2,34 @@
 import { useI18n } from "../i18n/useI18n";
 import type { Lang } from "../i18n/translator";
 
-export default function LanguageToggle() {
+export function LanguageToggle() {
   const { lang, setLang } = useI18n();
-  const isEn = lang === "en";
 
-  const switchTo = (next: Lang) => {
-    if (next === lang) return;
+  const handleClick = (next: Lang) => {
+    if (next === lang) return; // do nothing if already selected
     setLang(next);
   };
 
   return (
-    <div
-      className="inline-flex items-center rounded-full bg-gradient-gold px-3 py-1 text-xs font-semibold shadow-soft-lg"
-      aria-label="Language toggle"
-    >
+    <div className="inline-flex items-center rounded-full border border-amber-400 bg-black px-3 py-1 text-xs font-semibold shadow-sm">
       <button
         type="button"
+        onClick={() => handleClick("en")}
         className={
-          "px-2 py-0.5 rounded-full transition-colors " +
-          (isEn ? "bg-black text-white" : "bg-transparent text-black")
+          "px-2 rounded-full transition-colors " +
+          (lang === "en" ? "text-amber-400" : "text-white")
         }
-        onClick={() => switchTo("en")}
       >
         EN
       </button>
-      <span className="px-1 text-black/70">/</span>
+      <span className="px-1 text-white/60">/</span>
       <button
         type="button"
+        onClick={() => handleClick("fr")}
         className={
-          "px-2 py-0.5 rounded-full transition-colors " +
-          (!isEn ? "bg-black text-white" : "bg-transparent text-black")
+          "px-2 rounded-full transition-colors " +
+          (lang === "fr" ? "text-amber-400" : "text-white")
         }
-        onClick={() => switchTo("fr")}
       >
         FR
       </button>
