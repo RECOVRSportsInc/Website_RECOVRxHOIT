@@ -1,22 +1,12 @@
 // src/stores/languageStore.ts
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
 
-export type Language = "en" | "fr";
+import { useI18n } from "../i18n/useI18n";
 
-export type LanguageStore = {
-  language: Language;
-  setLanguage: (language: Language) => void;
-};
+export function useLanguageStore() {
+  const { lang, setLang } = useI18n();
 
-export const useLanguageStore = create<LanguageStore>()(
-  persist<LanguageStore>(
-    (set) => ({
-      language: "en",
-      setLanguage: (language: Language) => set({ language }),
-    }),
-    {
-      name: "language-storage",
-    }
-  )
-);
+  return {
+    language: lang,
+    setLanguage: (next: "en" | "fr") => setLang(next),
+  };
+}

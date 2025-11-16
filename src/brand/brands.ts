@@ -1,44 +1,50 @@
-import type { ComponentType, CSSProperties } from "react";
-import * as recovr from "../content/recovr";
-import * as hoit from "../content/hoit";
+// src/brand/brands.ts
 
 export type BrandKey = "recovr" | "hoit";
 
-export type BrandConfig = {
+export type BrandNavItem = {
+  label: string;
+  href: string;
+};
+
+export type Brand = {
   key: BrandKey;
   name: string;
   logoSrc?: string;
-  logoStyle?: CSSProperties;
-  colors: { primaryText: string; primaryBg: string; accent: string };
-  nav: { label: string; href: string }[];
-  Hero: ComponentType;
-  Sections: ComponentType[];
-  Footer: ComponentType;
+  logoStyle?: React.CSSProperties;
+  nav: BrandNavItem[];
 };
 
-export const BRANDS: Record<BrandKey, BrandConfig> = {
+export const brands: Record<BrandKey, Brand> = {
   recovr: {
     key: "recovr",
     name: "RECOVR Sports",
     logoSrc: "/img/recovr-logo.png",
-    logoStyle: { height: 28 },
-    colors: { primaryText: "text-recovr-blue", primaryBg: "bg-recovr-navy", accent: "from-recovr-blue to-recovr-light" },
-    nav: [{ label: "Home", href: "#" }, { label: "Programs", href: "#programs" }, { label: "Contact", href: "#contact" }],
-    Hero: recovr.Hero,
-    Sections: recovr.Sections,
-    Footer: recovr.Footer
+    logoStyle: {
+      height: 28,
+    },
+    nav: [
+      { label: "Programs", href: "#programs" },
+      { label: "Photo Gallery", href: "#gallery" },
+      { label: "Contact", href: "#contact" },
+    ],
   },
+
   hoit: {
     key: "hoit",
     name: "Hands On Integrative Therapy",
     logoSrc: "/img/hoit-logo.png",
-    logoStyle: { height: 30 },
-    colors: { primaryText: "text-hoit-purple", primaryBg: "bg-hoit-navy", accent: "from-hoit-purple to-hoit-light" },
-    nav: [{ label: "Services", href: "#services" }, { label: "Pricing", href: "#pricing" }, { label: "Contact", href: "#contact" }],
-    Hero: hoit.Hero,
-    Sections: hoit.Sections,
-    Footer: hoit.Footer
-  }
+    logoStyle: {
+      height: 28,
+    },
+    nav: [
+      { label: "Services", href: "#services" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "Photo Gallery", href: "#gallery" },
+      { label: "About Me", href: "#about" },
+      { label: "Privacy Policy", href: "#privacy" },
+      { label: "Cancellation Policy", href: "#cancellation" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
 };
-
-export const DEFAULT_BRAND: BrandKey = "recovr";

@@ -1,8 +1,6 @@
 // src/components/BrandSwitch.tsx
 
-import type React from "react";
 import { useBrand } from "../brand/BrandContext";
-import LanguageToggle from "./LanguageToggle";
 
 export default function BrandSwitch() {
   const { brand } = useBrand();
@@ -11,25 +9,27 @@ export default function BrandSwitch() {
   const targetHref = isHoit ? "/" : "/hoit";
   const label = isHoit ? "Switch to RECOVR" : "Switch to HOIT";
 
-  // RECOVR blue and HOIT lavender
-  const pillStyle: React.CSSProperties = {
-    backgroundColor: isHoit ? "#2B99FF" : "#E26AFF",
-    boxShadow: `0 0 24px ${isHoit ? "#2B99FF80" : "#E26AFF80"}`,
-  };
+  const baseClasses =
+    "inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold shadow-lg " +
+    "transition-transform duration-150 hover:-translate-y-[1px] hover:shadow-xl " +
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
+
+  // baby blue for “go to RECOVR”, lavender for “go to HOIT”
+  const hoitClasses = "bg-[#22A1FF] text-white"; // baby blue
+  const recovrClasses = "bg-[#E972FF] text-white"; // lavender
+
+  const classes = baseClasses + " " + (isHoit ? hoitClasses : recovrClasses);
 
   return (
-    <div className="flex items-center gap-4">
-      {/* EN / FR toggle */}
-      <LanguageToggle />
-
-      {/* Brand switch pill */}
-      <a
-        href={targetHref}
-        className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-white no-underline transition hover:-translate-y-0.5 hover:shadow-xl"
-        style={pillStyle}
-      >
-        {label}
-      </a>
-    </div>
+    <button
+      type="button"
+      className={classes}
+      onClick={() => {
+        window.location.href = targetHref;
+      }}
+      data-no-translate
+    >
+      {label}
+    </button>
   );
 }
