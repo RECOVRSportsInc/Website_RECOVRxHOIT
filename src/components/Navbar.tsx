@@ -1,12 +1,7 @@
 // src/components/Navbar.tsx
-
 import { useBrand } from "../brand/BrandContext";
-import type { NavItem } from "../brand/brands";
 import BrandSwitch from "./BrandSwitch";
 import LanguageSwitcher from "./LanguageSwitcher";
-
-const linkClasses =
-  "text-white/90 hover:text-recovr-gold no-underline text-sm font-medium";
 
 export default function Navbar() {
   const { brand } = useBrand();
@@ -24,12 +19,7 @@ export default function Navbar() {
                 ...(brand.logoStyle || {}),
                 height: (brand.logoStyle?.height as number) || 28,
               }}
-              className={
-                "block" +
-                (brand.key === "recovr"
-                  ? " filter drop-shadow-[0_0_8px_rgba(255,255,255,0.95)]"
-                  : "")
-              }
+              className="block"
             />
           ) : (
             <span className="font-extrabold tracking-tight text-white">
@@ -38,13 +28,12 @@ export default function Navbar() {
           )}
         </a>
 
-        {/* desktop nav */}
         <nav className="hidden md:flex items-center space-x-6">
-          {brand.nav.map((item: NavItem) => (
+          {brand.nav.map((item) => (
             <a
               key={item.href}
               href={`${base}${item.href === "#" ? "" : item.href}`}
-              className={linkClasses}
+              className="text-white/90 hover:text-recovr-gold no-underline text-sm font-medium"
             >
               {item.label}
             </a>
@@ -53,7 +42,6 @@ export default function Navbar() {
           <BrandSwitch />
         </nav>
 
-        {/* mobile right side */}
         <div className="md:hidden flex items-center gap-3">
           <LanguageSwitcher />
           <BrandSwitch />
