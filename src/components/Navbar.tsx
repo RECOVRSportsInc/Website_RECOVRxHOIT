@@ -33,7 +33,7 @@ export default function Navbar() {
             <a
               key={item.href}
               href={`${base}${item.href === "#" ? "" : item.href}`}
-              className="text-white/90 hover:text-white no-underline text-sm font-medium"
+              className="text-white/90 hover:text-recovr-gold no-underline text-sm font-medium"
             >
               {item.label}
             </a>

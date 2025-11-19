@@ -1,37 +1,64 @@
 // src/brand/BrandContext.tsx
 
-import { createContext, useContext, useMemo } from "react";
-import type { ReactNode } from "react";
-import { brands, type Brand, type BrandKey } from "./brands";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { BRANDS, type BrandKey, type BrandConfig } from "./brands";
 
-type Ctx = {
-  brand: Brand;
+type BrandContextValue = {
+  brand: BrandConfig;
+  setBrandPath: (key: BrandKey) => void;
 };
 
-const BrandContext = createContext<Ctx | undefined>(undefined);
+const BrandContext = createContext<BrandContextValue | undefined>(undefined);
 
-function getBrandFromLocation(): Brand {
+// Decide brand based on the current path
+function getInitialBrandKey(): BrandKey {
   if (typeof window === "undefined") {
-    return brands.recovr;
+    return "recovr";
   }
-  const path = window.location.pathname || "/";
-  const key: BrandKey = path.startsWith("/hoit") ? "hoit" : "recovr";
-  return brands[key];
+  const path = window.location.pathname.toLowerCase();
+  if (path.startsWith("/hoit")) return "hoit";
+  return "recovr";
 }
 
-export function BrandProvider({ children }: { children: ReactNode }) {
-  const brand = useMemo(() => getBrandFromLocation(), []);
+export function BrandProvider({ children }: { children: React.ReactNode }) {
+  const [brandKey, setBrandKey] = useState<BrandKey>(() => getInitialBrandKey());
+
+  // Keep brandKey in sync with URL on first mount
+  useEffect(() => {
+    const current = getInitialBrandKey();
+    if (current !== brandKey) {
+      setBrandKey(current);
+    }
+  }, []);
+
+  const value = useMemo<BrandContextValue>(
+    () => ({
+      brand: BRANDS[brandKey],
+      setBrandPath: (key: BrandKey) => {
+        setBrandKey(key);
+      },
+    }),
+    [brandKey]
+  );
+
   return (
-    <BrandContext.Provider value={{ brand }}>{children}</BrandContext.Provider>
+    <BrandContext.Provider value={value}>{children}</BrandContext.Provider>
   );
 }
 
-export function useBrand(): Ctx {
+export function useBrand(): BrandContextValue {
   const ctx = useContext(BrandContext);
   if (!ctx) {
-    throw new Error("useBrand must be used within a BrandProvider");
+    throw new Error("useBrand must be used inside BrandProvider");
   }
   return ctx;
 }
 
-export type { Brand, BrandKey, Ctx as BrandContextValue };
+// re-export types for convenience if you need them elsewhere
+export type { BrandKey, BrandConfig };
