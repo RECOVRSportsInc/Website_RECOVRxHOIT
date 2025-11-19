@@ -1,39 +1,64 @@
-import React, { createContext, useContext, useMemo, useState, useEffect } from "react";
+// src/brand/BrandContext.tsx
+
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { BRANDS, type BrandKey, type BrandConfig } from "./brands";
 
-type Ctx = { brand: BrandConfig; setBrandPath: (k: BrandKey) => void };
-const BrandCtx = createContext<Ctx>({ brand: BRANDS.recovr, setBrandPath: () => {} });
-
-function brandFromPath(p: string): BrandKey {
-  return p.startsWith("/hoit") ? "hoit" : "recovr";
-}
-
-export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [key, setKey] = useState<BrandKey>(brandFromPath(window.location.pathname));
-
-  useEffect(() => {
-    const onPop = () => setKey(brandFromPath(window.location.pathname));
-    window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, []);
-  // Auto route to HOIT when this domain is used
-  useEffect(() => {
-    const host = window.location.hostname;
-    const onRoot = window.location.pathname === "/";
-    if (host.includes("handsonintegrativetherapy.com") && onRoot) {
-      // this calls your existing path switcher
-      setBrandPath("hoit");
-   }
-}, []);
-
-  const setBrandPath = (k: BrandKey) => {
-    const path = k === "hoit" ? "/hoit" : "/";
-    if (window.location.pathname !== path) window.history.pushState({}, "", path);
-    setKey(k);
-  };
-
-  const value = useMemo(() => ({ brand: BRANDS[key], setBrandPath }), [key]);
-  return <BrandCtx.Provider value={value}>{children}</BrandCtx.Provider>;
+type BrandContextValue = {
+  brand: BrandConfig;
+  setBrandPath: (key: BrandKey) => void;
 };
 
-export const useBrand = () => useContext(BrandCtx);
+const BrandContext = createContext<BrandContextValue | undefined>(undefined);
+
+// Decide brand based on the current path
+function getInitialBrandKey(): BrandKey {
+  if (typeof window === "undefined") {
+    return "recovr";
+  }
+  const path = window.location.pathname.toLowerCase();
+  if (path.startsWith("/hoit")) return "hoit";
+  return "recovr";
+}
+
+export function BrandProvider({ children }: { children: React.ReactNode }) {
+  const [brandKey, setBrandKey] = useState<BrandKey>(() => getInitialBrandKey());
+
+  // Keep brandKey in sync with URL on first mount
+  useEffect(() => {
+    const current = getInitialBrandKey();
+    if (current !== brandKey) {
+      setBrandKey(current);
+    }
+  }, []);
+
+  const value = useMemo<BrandContextValue>(
+    () => ({
+      brand: BRANDS[brandKey],
+      setBrandPath: (key: BrandKey) => {
+        setBrandKey(key);
+      },
+    }),
+    [brandKey]
+  );
+
+  return (
+    <BrandContext.Provider value={value}>{children}</BrandContext.Provider>
+  );
+}
+
+export function useBrand(): BrandContextValue {
+  const ctx = useContext(BrandContext);
+  if (!ctx) {
+    throw new Error("useBrand must be used inside BrandProvider");
+  }
+  return ctx;
+}
+
+// re-export types for convenience if you need them elsewhere
+export type { BrandKey, BrandConfig };
