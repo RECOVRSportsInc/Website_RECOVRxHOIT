@@ -12,7 +12,7 @@ export function Hero() {
           className="w-full h-full object-cover opacity-40"
           data-no-translate
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1020]/100 via-[#f3bd3e]/5 to-[#0b1020/105" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1020]/100 via-[#f3bd3e]/5 to-[#0b1020]/105" />
       </div>
 
       {/* Glow blobs */}
