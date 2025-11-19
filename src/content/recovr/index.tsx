@@ -3,16 +3,16 @@
 /* HERO */
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-24 bg-gradient-to-br from-[#ffd66b] via-[#f3bd3e] to-[#d39a1f]">
+    <section className="relative overflow-hidden pt-28 pb-24 bg-[#634d1b]">
       {/* Faded stadium / action photo */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
-          src="/img/recovr-field.jpg" // put your stadium / sports photo here
+          src="/img/recovr-field.jpg"
           alt=""
-          className="w-full h-full object-cover opacity-40 blur-sm"
+          className="w-full h-full object-cover opacity-40"
           data-no-translate
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1020]/80 via-transparent to-[#0b1020]/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1020]/100 via-[#f3bd3e]/5 to-[#0b1020/105" />
       </div>
 
       {/* Glow blobs */}
@@ -32,7 +32,7 @@ export function Hero() {
         </div>
 
         <div className="rounded-3xl bg-[#121723]/88 border border-white/10 backdrop-blur-xl p-8 md:p-10 shadow-[0_40px_120px_rgba(15,23,42,0.95)]">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-[#0431b8] drop-shadow-[0_14px_40px_rgba(0,0,0,0.7)]">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-[#f3bd3e] drop-shadow-[0_14px_40px_rgba(0,0,0,0.7)]">
             RECOVR SPORTS
           </h1>
 
@@ -44,13 +44,15 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="#programs"
-              className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold bg-hoit-purple text-white shadow-[0_18px_60px_rgba(255,124,245,0.6)]"
+              className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold shadow-[0_18px_60px_rgba(243,189,62,0.65)]"
+              style={{ backgroundColor: "#f3bd3e", color: "#000000" }}
             >
               Explore Programs
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold border border-[#0431b8] text-[#0431b8] bg-black/30 hover:bg-black/50 transition-colors"
+              className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold border bg-black/30 hover:bg-black/50 transition-colors"
+              style={{ borderColor: "#f3bd3e", color: "#f3bd3e" }}
             >
               Contact
             </a>
@@ -61,7 +63,7 @@ export function Hero() {
   );
 }
 
-/* PROGRAMS on black, blue heading */
+/* PROGRAMS on black, blue heading and blue-accent cards */
 function Programs() {
   const items = [
     {
@@ -90,9 +92,12 @@ function Programs() {
     },
   ];
   return (
-    <section id="programs" className="section bg-black">
+    <section id="programs" className="section bg-white">
       <div className="container">
-        <h2 className="text-3xl font-bold mb-6" style={{ color: "#0431b8" }}>
+        <h2
+          className="text-3xl font-bold mb-6"
+          style={{ color: "#000000" }}
+        >
           Programs
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -111,7 +116,7 @@ function Programs() {
   );
 }
 
-/* GALLERY on baby blue / gold */
+/* GALLERY on gold */
 function Gallery() {
   const imgs = Array.from({ length: 9 }, (_, i) => `/photos/recovr/${i + 1}.jpg`);
   return (
@@ -119,7 +124,7 @@ function Gallery() {
       <div className="container">
         <h2
           className="text-3xl font-bold mb-6"
-          style={{ color: "#0431b8" }}
+          style={{ color: "#000000" }}
         >
           Photo Gallery
         </h2>
@@ -127,7 +132,7 @@ function Gallery() {
           {imgs.map((src, i) => (
             <div
               key={i}
-              className="card overflow-hidden rounded-3xl hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+              className="card card-accent-blue overflow-hidden rounded-3xl hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
             >
               <img
                 src={src}
@@ -146,23 +151,24 @@ function Gallery() {
   );
 }
 
-/* CONTACT on black, card with blue accent to match Programs */
+/* CONTACT on black, blue accent card */
 function Contact() {
   return (
-    <section id="contact" className="section bg-black">
+    <section id="contact" className="section bg-white">
       <div className="container">
         <div className="card card-accent-blue p-6">
           <h2
             className="text-2xl font-bold mb-2"
-            style={{ color: "#0431b8" }}
+            style={{ color: "#f3bd3e" }}
           >
             Contact
           </h2>
           <a
-            className="text-recovr-blue hover:underline"
             href="https://docs.google.com/forms/d/e/1FAIpQLSfsj5KsvXK2JjXY1SkWW7uzD00inFBp5wkv7eYl2Wb2lIjqRQ/viewform?usp=publish-editor"
             target="_blank"
             rel="noopener"
+            className="hover:underline"
+            style={{ color: "#f3bd3e" }}
           >
             recovrsports@proton.me
           </a>
@@ -172,19 +178,15 @@ function Contact() {
   );
 }
 
-/* BOTTOM LOGO: black band with a white card behind the logo */
+/* BOTTOM LOGO */
 function BrandMark() {
   return (
-    <section className="section bg-black">
-      <div className="container flex items-center justify-center">
-        <div className="card p-6">
-          <img
-            src="/img/recovr-logo.png"
-            alt="RECOVR Sports"
-            className="h-20 md:h-28"
-          />
-        </div>
-      </div>
+    <section className="section bg-recovr-gold flex justify-center">
+      <img
+         src="/img/recovr-logo.png"
+        alt="RECOVR Sports"
+         className="h-20 md:h-28"
+      />
     </section>
   );
 }
@@ -195,7 +197,7 @@ export const Sections = [Programs, Gallery, Contact, BrandMark];
 export function Footer() {
   return (
     <footer className="py-10 border-t">
-      <div className="container text-sm text-gray-600">
+      <div className="container text-sm text-white-600">
         © 2024 RECOVR Sports
       </div>
     </footer>

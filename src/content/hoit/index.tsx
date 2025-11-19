@@ -9,7 +9,7 @@ export function Hero() {
       {/* Faded clinic photo in the background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
-          src="/img/hoit-clinic-1.jpg" // put your clinic photo here
+          src="/img/hoit-clinic-1.jpg"
           alt=""
           className="w-full h-full object-cover"
           data-no-translate
@@ -63,7 +63,7 @@ export function Hero() {
   );
 }
 
-/* SERVICES on white, lavender cards */
+/* SERVICES on white, blue-accent cards */
 function Services() {
   const items = [
     {
@@ -83,6 +83,10 @@ function Services() {
       desc: "Targeted rehab for acute and chronic issues, combining manual therapy with corrective exercise.",
     },
     {
+      title: "Sports Field Coverage",
+      desc: "Hire a trusted certified athletic therapist to cover your next sporting event or team season.",
+    },
+    {
       title: "Virtual Phone Consult",
       desc: "Discuss goals or concerns remotely, get advice, and an initial plan before your first session.",
     },
@@ -90,12 +94,17 @@ function Services() {
   return (
     <section id="services" className="section bg-white">
       <div className="container">
-        <h2 className="text-3xl font-bold text-hoit-purple">Services</h2>
+        <h2
+          className="text-3xl font-bold mb-6"
+          style={{ color: "#3db0fc" }}
+        >
+          Services
+        </h2>
         <div className="grid sm:grid-cols-2 gap-6">
           {items.map((it) => (
             <div
               key={it.title}
-              className="card card-accent-lavender p-5 hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+              className="card card-accent-blue p-5 hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
             >
               <h3 className="font-semibold text-white">{it.title}</h3>
               <p className="text-white/80 mt-1">{it.desc}</p>
@@ -123,15 +132,15 @@ function Pricing() {
   return (
     <section id="pricing" className="section bg-[#3db0fc]">
       <div className="container">
-        <h2 className="text-3xl font-bold text-black ">Pricing</h2>
+        <h2 className="text-3xl font-bold text-black">Pricing</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           {plans.map((p) => (
             <div
               key={p.name}
-              className="card card-accent-lavender p-6 hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+              className="card card-accent-blue p-6 hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
             >
               <div className="text-sm text-white/80">{p.name}</div>
-              <div className="mt-1 text-3xl font-extrabold text-hoit-purple">
+              <div className="mt-1 text-3xl font-extrabold text-white">
                 {p.price}
               </div>
               {p.note && <div className="text-white/70 mt-1">{p.note}</div>}
@@ -139,7 +148,8 @@ function Pricing() {
                 href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
                 target="_blank"
                 rel="noopener"
-                className="btn btn-lavender mt-6"
+                className="btn mt-6"
+                style={{ backgroundColor: "#3db0fc", color: "#000" }}
               >
                 Book A Session
               </a>
@@ -151,18 +161,23 @@ function Pricing() {
   );
 }
 
-/* GALLERY on white */
+/* GALLERY on white, blue-accent cards */
 function Gallery() {
   const imgs = Array.from({ length: 9 }, (_, i) => `/photos/hoit/${i + 1}.jpg`);
   return (
     <section id="gallery" className="section bg-white">
       <div className="container">
-        <h2 className="text-3xl font-bold text-hoit-purple mb-6">Photo Gallery</h2>
+        <h2
+          className="text-3xl font-bold mb-6"
+          style={{ color: "#3db0fc" }}
+        >
+          Photo Gallery
+        </h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {imgs.map((src, i) => (
             <div
               key={i}
-              className="glass overflow-hidden rounded-3xl hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
+              className="card card-accent-blue overflow-hidden rounded-3xl hover:-translate-y-1 hover:shadow-2xl transition-transform duration-200"
             >
               <img
                 src={src}
@@ -216,10 +231,13 @@ function PrivacyPolicy() {
   return (
     <section id="privacy" className="section bg-white">
       <div className="container">
-        <h2 className="text-2xl font-bold text-hoit-purple">
+        <h2
+          className="text-2xl font-bold mb-2"
+          style={{ color: "#3db0fc" }}
+        >
           Privacy Policy
         </h2>
-        <div className="glass p-6 text-white space-y-3">
+        <div className="card card-accent-blue p-6 text-white space-y-3">
           <p>
             We collect only the information needed to book and deliver services, such
             as your name, contact details, and relevant health history that you choose
@@ -230,10 +248,10 @@ function PrivacyPolicy() {
             We keep records securely and do not sell personal data. You may request a
             copy or correction of your information at any time by completing{" "}
             <a
-              className="text-hoit-purple"
               href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
               target="_blank"
               rel="noopener"
+              style={{ color: "#3db0fc" }}
             >
               our contact form
             </a>
@@ -250,10 +268,8 @@ function CancellationPolicy() {
   return (
     <section id="cancellation" className="section bg-[#3db0fc]">
       <div className="container">
-        <h2 className="text-2xl font-bold text-black">
-          Cancellation Policy
-        </h2>
-        <div className="glass p-6 text-white space-y-3">
+        <h2 className="text-2xl font-bold text-black">Cancellation Policy</h2>
+        <div className="card card-accent-blue p-6 text-white space-y-3">
           <p>
             Please provide at least 24 hours notice to cancel or reschedule. Late
             cancellations or no shows may incur a fee up to the full session rate.
@@ -261,10 +277,10 @@ function CancellationPolicy() {
           <p>
             To cancel, please complete{" "}
             <a
-              className="text-hoit-purple"
               href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
               target="_blank"
               rel="noopener"
+              style={{ color: "#3db0fc" }}
             >
               our contact form
             </a>
@@ -279,15 +295,21 @@ function CancellationPolicy() {
 /* CONTACT */
 function Contact() {
   return (
-    <section id="contact" className="section bg-black">
+    <section id="contact" className="section bg-white">
       <div className="container">
-        <div className="card card-accent-lavender p-6">
-          <h2 className="text-2xl font-bold text-hoit-purple mb-2">Contact</h2>
+        <div className="card card-accent-blue p-6">
+          <h2
+            className="text-2xl font-bold mb-2"
+            style={{ color: "#3db0fc" }}
+          >
+            Contact
+          </h2>
           <a
-            className="text-hoit-mint hover:underline"
             href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
             target="_blank"
             rel="noopener"
+            style={{ color: "#3db0fc" }}
+            className="hover:underline"
           >
             handsonintegrativetherapy@gmail.com
           </a>
@@ -300,7 +322,7 @@ function Contact() {
 /* BIG LOGO at bottom */
 function BrandMark() {
   return (
-    <section className="section bg-black">
+    <section className="section bg-[#3db0fc]">
       <div className="container flex items-center justify-center">
         <img src="/img/hoit-logo.png" alt="HOIT logo" className="h-24 md:h-32" />
       </div>
@@ -323,7 +345,7 @@ export const Sections = [
 export function Footer() {
   return (
     <footer className="py-10 border-t">
-      <div className="container text-sm text-gray-600">
+      <div className="container text-sm text-white space-y-3">
         © 2018 Hands On Integrative Therapy
       </div>
     </footer>

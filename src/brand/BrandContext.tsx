@@ -1,37 +1,39 @@
-// src/brand/BrandContext.tsx
+import React, { createContext, useContext, useMemo, useState, useEffect } from "react";
+import { BRANDS, type BrandKey, type BrandConfig } from "./brands";
 
-import { createContext, useContext, useMemo } from "react";
-import type { ReactNode } from "react";
-import { brands, type Brand, type BrandKey } from "./brands";
+type Ctx = { brand: BrandConfig; setBrandPath: (k: BrandKey) => void };
+const BrandCtx = createContext<Ctx>({ brand: BRANDS.recovr, setBrandPath: () => {} });
 
-type Ctx = {
-  brand: Brand;
+function brandFromPath(p: string): BrandKey {
+  return p.startsWith("/hoit") ? "hoit" : "recovr";
+}
+
+export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [key, setKey] = useState<BrandKey>(brandFromPath(window.location.pathname));
+
+  useEffect(() => {
+    const onPop = () => setKey(brandFromPath(window.location.pathname));
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+  // Auto route to HOIT when this domain is used
+  useEffect(() => {
+    const host = window.location.hostname;
+    const onRoot = window.location.pathname === "/";
+    if (host.includes("handsonintegrativetherapy.com") && onRoot) {
+      // this calls your existing path switcher
+      setBrandPath("hoit");
+   }
+}, []);
+
+  const setBrandPath = (k: BrandKey) => {
+    const path = k === "hoit" ? "/hoit" : "/";
+    if (window.location.pathname !== path) window.history.pushState({}, "", path);
+    setKey(k);
+  };
+
+  const value = useMemo(() => ({ brand: BRANDS[key], setBrandPath }), [key]);
+  return <BrandCtx.Provider value={value}>{children}</BrandCtx.Provider>;
 };
 
-const BrandContext = createContext<Ctx | undefined>(undefined);
-
-function getBrandFromLocation(): Brand {
-  if (typeof window === "undefined") {
-    return brands.recovr;
-  }
-  const path = window.location.pathname || "/";
-  const key: BrandKey = path.startsWith("/hoit") ? "hoit" : "recovr";
-  return brands[key];
-}
-
-export function BrandProvider({ children }: { children: ReactNode }) {
-  const brand = useMemo(() => getBrandFromLocation(), []);
-  return (
-    <BrandContext.Provider value={{ brand }}>{children}</BrandContext.Provider>
-  );
-}
-
-export function useBrand(): Ctx {
-  const ctx = useContext(BrandContext);
-  if (!ctx) {
-    throw new Error("useBrand must be used within a BrandProvider");
-  }
-  return ctx;
-}
-
-export type { Brand, BrandKey, Ctx as BrandContextValue };
+export const useBrand = () => useContext(BrandCtx);
