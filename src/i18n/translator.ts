@@ -1,6 +1,6 @@
 // src/i18n/translator.ts
-// Lightweight DOM translator using string replacement + localStorage.
-// Reversible EN ↔ FR without reloading the page.
+// Lightweight DOM translator using string replacement + localStorage
+// Reversible without reloading the page.
 
 export type Lang = "en" | "fr";
 
@@ -15,6 +15,14 @@ export function getStoredLang(): Lang {
 export function storeLang(lang: Lang) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(STORAGE_KEY, lang);
+}
+
+// Back compat names used elsewhere
+export function readStoredLang(): Lang {
+  return getStoredLang();
+}
+export function writeStoredLang(lang: Lang) {
+  storeLang(lang);
 }
 
 // Elements we never want to translate
@@ -48,6 +56,18 @@ function translateText(text: string, to: Lang): string {
     .replace(/\bView Services\b/gi, "Voir les services")
     .replace(/\bour contact form\b/gi, "notre formulaire de contact");
 
+  // HOIT pricing labels / notes
+  out = out
+    .replace(/\bAT \/ Massage Consult\b/g, "Consultation thérapie sportive/massage")
+    .replace(/\bAT \/ Massage 60 Minutes\b/g, "Thérapie sportive/massage 60 minutes")
+    .replace(/\bAT \/ Massage 45 Minutes\b/g, "Thérapie sportive/massage 45 minutes")
+    .replace(/\bAT \/ Massage 30 Minutes\b/g, "Thérapie sportive/massage 30 minutes")
+    .replace(/\bPhone Consult\b/g, "Consultation téléphonique")
+    .replace(
+      "First appointment only for new clients",
+      "Première consultation seulement pour les nouveaux clients"
+    );
+
   // HOIT hero subtitle
   out = out.replace(
     "Athletic therapy and massage therapy services for all ages with an integrative, hands on approach to recovery and performance.",
@@ -74,20 +94,15 @@ function translateText(text: string, to: Lang): string {
       "Progressive, evidence based programs to build strength and resilience for daily life and sport.",
       "Programmes progressifs basés sur les données probantes pour développer la force et la résilience au quotidien et dans le sport."
     )
-    // Sports Rehabilitation (title + desc you asked for)
     .replace("Sports Rehabilitation", "Réadaptation sportive")
     .replace(
       "Targeted rehab for acute and chronic issues, combining manual therapy with corrective exercise.",
       "Réadaptation ciblée pour les problèmes aigus et chroniques, combinant thérapie manuelle et exercices correctifs."
     )
-    // Sports Field Coverage (new card)
-    .replace(
-      "Sports Field Coverage",
-      "Couverture de terrain sportif"
-    )
+    .replace("Sports Field Coverage", "Couverture sur le terrain")
     .replace(
       "Hire a trusted certified athletic therapist to cover your next sporting event or team season.",
-      "Engagez un thérapeute du sport certifié et de confiance pour couvrir votre prochain événement sportif ou la saison de votre équipe."
+      "Faites appel à un thérapeute du sport certifié de confiance pour couvrir votre prochain événement sportif ou la saison de votre équipe."
     )
     .replace("Virtual Phone Consult", "Consultation téléphonique virtuelle")
     .replace(
@@ -95,34 +110,31 @@ function translateText(text: string, to: Lang): string {
       "Discutez de vos objectifs ou préoccupations à distance, obtenez des conseils et un plan initial avant votre première séance."
     );
 
-  // HOIT pricing note
+  // HOIT privacy main paragraph
   out = out.replace(
-    "First appointment only for new clients",
-    "Première consultation uniquement pour les nouveaux clients"
+    "We collect only the information needed to book and deliver services, such as your name, contact details, and relevant health history that you choose to share. Your information is used to provide care, manage appointments, and communicate with you.",
+    "Nous ne recueillons que les informations nécessaires pour réserver et offrir les services, comme votre nom, vos coordonnées et les renseignements de santé pertinents que vous choisissez de partager. Ces informations servent à vous offrir des soins, gérer vos rendez-vous et communiquer avec vous."
   );
 
-  // HOIT privacy and cancellation text
-  out = out
-    .replace(
-      "We collect only the information needed to book and deliver services, such as your name, contact details, and relevant health history that you choose to share. Your information is used to provide care, manage appointments, and communicate with you.",
-      "Nous ne recueillons que les informations nécessaires pour réserver et offrir les services, comme votre nom, vos coordonnées et les renseignements de santé pertinents que vous choisissez de partager. Ces informations servent à vous offrir des soins, gérer vos rendez-vous et communiquer avec vous."
-    )
-    .replace(
-      "We keep records securely and do not sell personal data. You may request a copy or correction of your information at any time by completing",
-      "Nous conservons vos dossiers de façon sécuritaire et ne vendons pas vos données personnelles. Vous pouvez demander une copie ou une correction de vos informations en tout temps en remplissant"
-    )
-    .replace(
-      "This page is informational and not legal advice.",
-      "Cette page est fournie à titre informatif et ne constitue pas un avis juridique."
-    )
-    .replace(
-      "Please provide at least 24 hours notice to cancel or reschedule. Late cancellations or no shows may incur a fee up to the full session rate.",
-      "Veuillez donner un préavis d’au moins 24 heures pour annuler ou reporter un rendez-vous. Les annulations tardives ou absences peuvent entraîner des frais jusqu’au montant total de la séance."
-    )
-    .replace(
-      "To cancel, please complete",
-      "Pour annuler, veuillez remplir"
-    );
+  // HOIT privacy second sentence, just the text node before the link
+  out = out.replace(
+    /We keep records securely and do not sell personal data\. You may request a copy or correction of your information at any time by completing\s*/g,
+    "Nous conservons vos dossiers de manière sécurisée et ne vendons pas vos données personnelles. Vous pouvez demander une copie ou une correction de vos informations en tout temps en remplissant "
+  );
+
+  // HOIT "informational, not legal advice"
+  out = out.replace(
+    "This page is informational and not legal advice.",
+    "Cette page est fournie à titre informatif et ne constitue pas un avis juridique."
+  );
+
+  // HOIT cancellation policy paragraphs
+  out = out.replace(
+    "Please provide at least 24 hours notice to cancel or reschedule. Late cancellations or no shows may incur a fee up to the full session rate.",
+    "Veuillez donner un préavis d'au moins 24 heures pour annuler ou reporter votre rendez-vous. Les annulations tardives ou les absences peuvent entraîner des frais pouvant aller jusqu'au tarif complet de la séance."
+  );
+
+  out = out.replace(/To cancel, please complete\s*/g, "Pour annuler, veuillez remplir ");
 
   // RECOVR hero subtitle
   out = out.replace(
@@ -137,10 +149,7 @@ function translateText(text: string, to: Lang): string {
       "Immersive gameplay sessions that promote coordination, reaction time, and fun active breaks.",
       "Sessions de jeu immersives qui favorisent la coordination, le temps de réaction et des pauses actives ludiques."
     )
-    .replace(
-      "Virtual Reality Rehabilitation",
-      "Réadaptation en réalité virtuelle"
-    )
+    .replace("Virtual Reality Rehabilitation", "Réadaptation en réalité virtuelle")
     .replace(
       "Task specific VR training to rebuild movement patterns and engagement during rehab.",
       "Entraînement en RV spécifique aux tâches pour reconstruire les schémas de mouvement et l’engagement pendant la réadaptation."
