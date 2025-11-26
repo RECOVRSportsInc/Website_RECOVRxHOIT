@@ -1,35 +1,43 @@
 // src/components/LanguageToggle.tsx
+
 import { useI18n } from "../i18n/useI18n";
 import type { Lang } from "../i18n/translator";
 
 export function LanguageToggle() {
   const { lang, setLang } = useI18n();
 
-  const handleClick = (next: Lang) => {
-    if (next === lang) return; // do nothing if already selected
-    setLang(next);
+  const buttonClasses = (code: Lang) => {
+    const isActive = lang === code;
+    return [
+      "px-3 py-1 rounded-full text-xs font-semibold border",
+      "transition-colors duration-150",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
+      isActive
+        ? "bg-[#f3bd3e] text-black border-[#f3bd3e]"
+        : "bg-black text-white border-[#f3bd3e]",
+    ].join(" ");
   };
 
   return (
-    <div className="inline-flex items-center rounded-full border border-amber-400 bg-black px-3 py-1 text-xs font-semibold shadow-sm">
+    <div
+      className="inline-flex items-center gap-1 rounded-full border border-[#f3bd3e] bg-black px-1 py-1"
+      data-no-translate
+    >
       <button
         type="button"
-        onClick={() => handleClick("en")}
-        className={
-          "px-2 rounded-full transition-colors " +
-          (lang === "en" ? "text-amber-400" : "text-white")
-        }
+        className={buttonClasses("en")}
+        onClick={() => {
+          if (lang !== "en") setLang("en");
+        }}
       >
         EN
       </button>
-      <span className="px-1 text-white/60">/</span>
       <button
         type="button"
-        onClick={() => handleClick("fr")}
-        className={
-          "px-2 rounded-full transition-colors " +
-          (lang === "fr" ? "text-amber-400" : "text-white")
-        }
+        className={buttonClasses("fr")}
+        onClick={() => {
+          if (lang !== "fr") setLang("fr");
+        }}
       >
         FR
       </button>

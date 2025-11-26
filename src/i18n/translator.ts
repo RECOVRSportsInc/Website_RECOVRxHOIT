@@ -15,6 +15,17 @@ export function getStoredLang(): Lang {
 export function storeLang(lang: Lang) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(STORAGE_KEY, lang);
+
+  // Notify any React components that are listening
+  try {
+    window.dispatchEvent(
+      new CustomEvent("site-lang-changed", {
+        detail: { lang },
+      })
+    );
+  } catch {
+    // ignore if CustomEvent not available
+  }
 }
 
 // Back compat names used elsewhere
@@ -99,11 +110,6 @@ function translateText(text: string, to: Lang): string {
       "Targeted rehab for acute and chronic issues, combining manual therapy with corrective exercise.",
       "Réadaptation ciblée pour les problèmes aigus et chroniques, combinant thérapie manuelle et exercices correctifs."
     )
-    .replace("Sports Field Coverage", "Couverture sur le terrain")
-    .replace(
-      "Hire a trusted certified athletic therapist to cover your next sporting event or team season.",
-      "Faites appel à un thérapeute du sport certifié de confiance pour couvrir votre prochain événement sportif ou la saison de votre équipe."
-    )
     .replace("Virtual Phone Consult", "Consultation téléphonique virtuelle")
     .replace(
       "Discuss goals or concerns remotely, get advice, and an initial plan before your first session.",
@@ -134,7 +140,10 @@ function translateText(text: string, to: Lang): string {
     "Veuillez donner un préavis d'au moins 24 heures pour annuler ou reporter votre rendez-vous. Les annulations tardives ou les absences peuvent entraîner des frais pouvant aller jusqu'au tarif complet de la séance."
   );
 
-  out = out.replace(/To cancel, please complete\s*/g, "Pour annuler, veuillez remplir ");
+  out = out.replace(
+    /To cancel, please complete\s*/g,
+    "Pour annuler, veuillez remplir "
+  );
 
   // RECOVR hero subtitle
   out = out.replace(
@@ -149,7 +158,10 @@ function translateText(text: string, to: Lang): string {
       "Immersive gameplay sessions that promote coordination, reaction time, and fun active breaks.",
       "Sessions de jeu immersives qui favorisent la coordination, le temps de réaction et des pauses actives ludiques."
     )
-    .replace("Virtual Reality Rehabilitation", "Réadaptation en réalité virtuelle")
+    .replace(
+      "Virtual Reality Rehabilitation",
+      "Réadaptation en réalité virtuelle"
+    )
     .replace(
       "Task specific VR training to rebuild movement patterns and engagement during rehab.",
       "Entraînement en RV spécifique aux tâches pour reconstruire les schémas de mouvement et l’engagement pendant la réadaptation."
