@@ -6,7 +6,7 @@ export default function BrandSwitch() {
   const { brand } = useBrand();
 
   const isHoit = brand.key === "hoit";
-  const targetHref = isHoit ? "/" : "/hoit";
+  const targetHref = isHoit ? "/recovrsports" : "/"; // HOIT -> RECOVR, RECOVR -> HOIT
   const label = isHoit ? "Switch to RECOVR" : "Switch to HOIT";
 
   const baseClasses =
@@ -14,11 +14,9 @@ export default function BrandSwitch() {
     "transition-transform duration-150 hover:-translate-y-[1px] hover:shadow-xl " +
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
 
-  // baby blue when you are on HOIT (going to RECOVR)
-  const hoitClasses = "bg-[#22A1FF] text-white";
-
-  // gold when you are on RECOVR (going to HOIT) – replaces the old lavender
-  const recovrClasses = "bg-[#f3bd3e] text-black";
+  // baby blue for “go to RECOVR”, lavender for “go to HOIT”
+  const hoitClasses = "bg-[#22A1FF] text-white"; // baby blue
+  const recovrClasses = "bg-[#E972FF] text-white"; // lavender
 
   const classes = baseClasses + " " + (isHoit ? hoitClasses : recovrClasses);
 

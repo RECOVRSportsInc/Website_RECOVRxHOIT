@@ -16,49 +16,51 @@ type BrandContextValue = {
 
 const BrandContext = createContext<BrandContextValue | undefined>(undefined);
 
-// Decide brand based on the current path
-function getInitialBrandKey(): BrandKey {
-  if (typeof window === "undefined") {
+// Decide which brand to show based on the URL
+function detectInitialBrand(): BrandKey {
+  if (typeof window === "undefined") return "hoit";
+
+  const path = window.location.pathname.toLowerCase();
+
+  // Any URL that starts with /recovrsports is RECOVR
+  if (path.startsWith("/recovrsports")) {
     return "recovr";
   }
-  const path = window.location.pathname.toLowerCase();
-  if (path.startsWith("/hoit")) return "hoit";
-  return "recovr";
+
+  // Everything else (including "/") is HOIT
+  return "hoit";
 }
 
 export function BrandProvider({ children }: { children: React.ReactNode }) {
-  const [brandKey, setBrandKey] = useState<BrandKey>(() => getInitialBrandKey());
+  const [currentKey, setCurrentKey] = useState<BrandKey>(() => detectInitialBrand());
 
-  // Keep brandKey in sync with URL on first mount
+  // Keep brand in sync if the user lands directly on a path
   useEffect(() => {
-    const current = getInitialBrandKey();
-    if (current !== brandKey) {
-      setBrandKey(current);
-    }
+    setCurrentKey(detectInitialBrand());
   }, []);
 
-  const value = useMemo<BrandContextValue>(
+  const value = useMemo(
     () => ({
-      brand: BRANDS[brandKey],
+      brand: BRANDS[currentKey],
       setBrandPath: (key: BrandKey) => {
-        setBrandKey(key);
+        const href = key === "hoit" ? "/" : "/recovrsports";
+        window.location.href = href;
       },
     }),
-    [brandKey]
+    [currentKey]
   );
 
   return (
-    <BrandContext.Provider value={value}>{children}</BrandContext.Provider>
+    <BrandContext.Provider value={value}>
+      {children}
+    </BrandContext.Provider>
   );
 }
 
 export function useBrand(): BrandContextValue {
   const ctx = useContext(BrandContext);
   if (!ctx) {
-    throw new Error("useBrand must be used inside BrandProvider");
+    throw new Error("useBrand must be used inside IBrandProvider");
   }
   return ctx;
 }
-
-// re-export types for convenience if you need them elsewhere
-export type { BrandKey, BrandConfig };

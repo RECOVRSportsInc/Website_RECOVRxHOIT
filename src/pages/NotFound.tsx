@@ -1,6 +1,11 @@
 // src/NotFound.tsx
+import { useEffect } from "react";
 
 export default function NotFound() {
+  useEffect(() => {
+    document.title = "Page not found | RECOVR / HOIT";
+  }, []);
+
   return (
     <main className="min-h-screen flex items-center justify-center bg-slate-950 text-slate-100">
       <div className="text-center px-6">
