@@ -15,17 +15,6 @@ export function getStoredLang(): Lang {
 export function storeLang(lang: Lang) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(STORAGE_KEY, lang);
-
-  // Notify any React components that are listening
-  try {
-    window.dispatchEvent(
-      new CustomEvent("site-lang-changed", {
-        detail: { lang },
-      })
-    );
-  } catch {
-    // ignore if CustomEvent not available
-  }
 }
 
 // Back compat names used elsewhere
@@ -64,15 +53,32 @@ function translateText(text: string, to: Lang): string {
     .replace(/\bProgrammes\b/g, "Programmes")
     .replace(/\bExplore Programs\b/gi, "Explorer les programmes")
     .replace(/\bBook A Session\b/gi, "Réserver une séance")
+    .replace(/\bBook the Space\b/gi, "Réserver l'espace")
     .replace(/\bView Services\b/gi, "Voir les services")
     .replace(/\bour contact form\b/gi, "notre formulaire de contact");
 
   // HOIT pricing labels / notes
   out = out
-    .replace(/\bAT \/ Massage Consult\b/g, "Consultation thérapie sportive/massage")
-    .replace(/\bAT \/ Massage 60 Minutes\b/g, "Thérapie sportive/massage 60 minutes")
-    .replace(/\bAT \/ Massage 45 Minutes\b/g, "Thérapie sportive/massage 45 minutes")
-    .replace(/\bAT \/ Massage 30 Minutes\b/g, "Thérapie sportive/massage 30 minutes")
+    .replace(
+      /\bAT \/ Massage Consult\b/g,
+      "Consultation thérapie sportive/massage"
+    )
+    .replace(
+      /\bAT \/ Massage 90 Minutes\b/g,
+      "Thérapie sportive/massage 90 minutes"
+    )
+    .replace(
+      /\bAT \/ Massage 60 Minutes\b/g,
+      "Thérapie sportive/massage 60 minutes"
+    )
+    .replace(
+      /\bAT \/ Massage 45 Minutes\b/g,
+      "Thérapie sportive/massage 45 minutes"
+    )
+    .replace(
+      /\bAT \/ Massage 30 Minutes\b/g,
+      "Thérapie sportive/massage 30 minutes"
+    )
     .replace(/\bPhone Consult\b/g, "Consultation téléphonique")
     .replace(
       "First appointment only for new clients",
@@ -85,7 +91,7 @@ function translateText(text: string, to: Lang): string {
     "Services de thérapie sportive et de massothérapie pour tous les âges, avec une approche pratique et intégrée de la récupération et de la performance."
   );
 
-  // HOIT services cards
+  // HOIT services cards (includes Sports Field Coverage)
   out = out
     .replace("Athletic Therapy", "Thérapie sportive")
     .replace(
@@ -109,6 +115,11 @@ function translateText(text: string, to: Lang): string {
     .replace(
       "Targeted rehab for acute and chronic issues, combining manual therapy with corrective exercise.",
       "Réadaptation ciblée pour les problèmes aigus et chroniques, combinant thérapie manuelle et exercices correctifs."
+    )
+    .replace("Sports Field Coverage", "Couverture sur le terrain")
+    .replace(
+      "Hire a trusted certified athletic therapist to cover your next sporting event or team season.",
+      "Engagez un(e) thérapeute du sport certifié(e) de confiance pour couvrir votre prochain événement sportif ou la saison de votre équipe."
     )
     .replace("Virtual Phone Consult", "Consultation téléphonique virtuelle")
     .replace(

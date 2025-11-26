@@ -63,7 +63,7 @@ export function Hero() {
   );
 }
 
-/* PROGRAMS on black, blue heading and blue-accent cards */
+/* PROGRAMS on white, blue-accent cards + big button */
 function Programs() {
   const items = [
     {
@@ -91,6 +91,7 @@ function Programs() {
       desc: "Applied analysis of posture, force vectors, and timing to improve performance and reduce injury risk.",
     },
   ];
+
   return (
     <section id="programs" className="section bg-white">
       <div className="container">
@@ -100,6 +101,7 @@ function Programs() {
         >
           Programs
         </h2>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((it) => (
             <div
@@ -110,6 +112,28 @@ function Programs() {
               <p className="text-white/80 mt-1">{it.desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* Big full width booking button */}
+        <div className="mt-10">
+          <a
+            href="https://calendar.app.google/frgQtD5a3P7Z3t1r6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={[
+              "inline-flex w-full items-center justify-center rounded-full px-8 py-4",
+              "text-base font-semibold",
+              // RECOVR gold brand color
+              "bg-[#f3bd3e] text-black",
+              // 3D pop effect
+              "shadow-[0_18px_40px_rgba(243,189,62,0.7)]",
+              "hover:shadow-[0_26px_70px_rgba(0,0,0,0.55)]",
+              "hover:-translate-y-[1px]",
+              "transition-transform duration-200",
+            ].join(" ")}
+          >
+            Book the Space
+          </a>
         </div>
       </div>
     </section>
