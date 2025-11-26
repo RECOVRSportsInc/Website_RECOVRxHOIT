@@ -1,12 +1,7 @@
 // src/i18n/useI18n.tsx
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import {
   getStoredLang,
   storeLang,
@@ -16,15 +11,15 @@ import {
 
 type I18nContextValue = {
   lang: Lang;
-  setLang: (lang: Lang) => void;
+  setLang: (next: Lang) => void;
 };
 
-const I18nContext = createContext<I18nContextValue | null>(null);
+const I18nContext = createContext<I18nContextValue | undefined>(undefined);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(() => getStoredLang());
 
-  // apply translation whenever lang changes
+  // Ensure DOM matches the stored language
   useEffect(() => {
     translatePage(lang);
   }, [lang]);
@@ -33,6 +28,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     if (next === lang) return;
     storeLang(next);
     setLangState(next);
+    translatePage(next);
   };
 
   return (
@@ -45,7 +41,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 export function useI18n(): I18nContextValue {
   const ctx = useContext(I18nContext);
   if (!ctx) {
-    throw new Error("useI18n must be used within an I18nProvider");
+    throw new Error("useI18n must be used inside I18nProvider");
   }
   return ctx;
 }

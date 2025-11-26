@@ -1,8 +1,6 @@
 // src/content/hoit/abouttext.ts
 
-// Put your real English + French about copy below.
-// Keep the exports and template string structure the same.
-
+// English version
 export const HOIT_ABOUT_EN = `
 Steven Warsh is a Registered Massage Therapist with the AMQ and a Certified Athletic Therapist (AT) with CATA living in Montreal, Quebec who takes an integrative, holistic approach to therapy. He began his training at McGill University where he completed a Bachelor of Science in Kinesiology and fell in love with Athletic Therapy during his time with the Varsity Rugby. He then completed his Bachelor and Master's of Athletic Therapy, with distinction, from Concordia University. He graduated from the Ontario College of Health and Technology and acquired his registered Massage Therapy Certification. He has since moved back to Montreal, and is now a registered LEVEL 3 Massage Therapist with the Association des Massothérapeutes du Québec (AMQ), the highest ranking massage therapist level. 
 
@@ -17,16 +15,17 @@ As an elite baseball player, competitive hockey, tennis, volleyball and golfer i
 If you want to know more about Virtual Reality and RECOVR Sports, hit "switch to RECOVR" in the top right corner.
 `;
 
+// French version
 export const HOIT_ABOUT_FR = `
 Steven Warsh est massothérapeute agréé auprès de l'AMQ et thérapeute du sport certifié (TSC) auprès de la CATA. Résidant à Montréal, au Québec, il privilégie une approche intégrative et holistique de la thérapie. Il a débuté sa formation à l'Université McGill, où il a obtenu un baccalauréat ès sciences en kinésiologie et s'est passionné pour la thérapie du sport lors de son passage au sein de l'équipe universitaire de rugby. Il a ensuite complété son baccalauréat et sa maîtrise en thérapie du sport, avec distinction, à l'Université Concordia. Diplômé du Collège des sciences de la santé et de la technologie de l'Ontario, il a obtenu sa certification en massothérapie. De retour à Montréal, il est maintenant massothérapeute agréé de niveau 3 auprès de l'Association des massothérapeutes du Québec (AMQ), le plus haut niveau de certification.
 
 Steven a travaillé avec de nombreuses équipes et organisations sportives, notamment Baseball Canada, l'équipe de volleyball et de crosse de l'Ontario, ainsi que les universités McGill et Concordia. Il entraîne également les équipes de baseball de l'Université McGill et de volleyball de Hertzliah.
 
-Steven a passé quatre ans à la Clinique MV, un cabinet privé situé à Westmount, au Québec, où il dirigeait les services de massothérapie et de thérapie sportive. Il a ainsi eu l'opportunité de travailler avec des patients de tous âges et de tous niveaux, pratiquant presque tous les sports, de la grand-mère souhaitant simplement améliorer son équilibre à l'athlète de haut niveau en quête d'un regain de performance. Son approche est holistique: il considère le corps dans son ensemble et ne se contente pas d'examiner la zone douloureuse. Bien souvent, la douleur ressentie résulte d'un problème systémique et, si elle n'est pas traitée, elle risque de réapparaître, engendrant des frais supplémentaires considérables. Grâce à leur travail sur le terrain et à la nécessité d'évaluer rapidement les athlètes, les thérapeutes sportifs comme Steven sont spécialisés dans le diagnostic précis des blessures. Bien que la thérapie sportive ne soit pas une science exacte, elle figure parmi les meilleurs professionnels de la santé pour établir un diagnostic clinique précis, essentiel pour le patient.
+Steven a passé quatre ans à la Clinique MV, un cabinet privé situé à Westmount, au Québec, où il dirigeait les services de massothérapie et de thérapie sportive. Il a ainsi eu l'opportunité de travailler avec des patients de tous âges et de tous niveaux, pratiquant presque tous les sports, de la grand-mère souhaitant simplement améliorer son équilibre à l'athlète de haut niveau en quête d'un regain de performance. Son approche est holistique : il considère le corps dans son ensemble et ne se contente pas d'examiner la zone douloureuse. Bien souvent, la douleur ressentie résulte d'un problème systémique et, si elle n'est pas traitée, elle risque de réapparaître, engendrant des frais supplémentaires considérables. Grâce à leur travail sur le terrain et à la nécessité d'évaluer rapidement les athlètes, les thérapeutes sportifs comme Steven sont spécialisés dans le diagnostic précis des blessures. Bien que la thérapie sportive ne soit pas une science exacte, elle figure parmi les meilleurs professionnels de la santé pour établir un diagnostic clinique précis, essentiel pour le patient.
 
 La capacité de Steven à intégrer toutes ses connaissances en kinésiologie, thérapie sportive, massothérapie, enseignement, coaching, réalité virtuelle et entrepreneuriat permet à ses clients de bénéficier de traitements préventifs et de réadaptation complets et personnalisés.
 
 Ancien joueur de baseball de haut niveau et pratiquant de hockey, de tennis, de volleyball et de golf en compétition, il comprend la plupart de ses patients. Sa vaste connaissance du sport lui permet de concevoir et de mettre en œuvre des programmes plus spécifiques et efficaces. L'utilisation des différentes spécialités acquises au cours de sa formation offre au patient une réadaptation et un traitement complets et approfondis. Avec Steven, vous avez la garantie d'un engagement total. Dévoué, honnête et enthousiaste, il travaille sans relâche et sera ravi de vous accueillir à sa clinique.
 
-Pour en savoir plus sur la réalité virtuelle et RECOVR Sports, cliquez sur "Passer à RECOVR" en haut à droite.
+Pour en savoir plus sur la réalité virtuelle et RECOVR Sports, cliquez sur « Passer à RECOVR » en haut à droite.
 `;
