@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://website-recovrxhoit.pages.dev/sitemap.xml
+
+Sitemap: https://www.handsonintegrativetherapy.com/sitemap.xml

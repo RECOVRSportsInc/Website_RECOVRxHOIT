@@ -4,16 +4,19 @@
   <url>
     <loc>https://www.handsonintegrativetherapy.com/</loc>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
     <loc>https://www.handsonintegrativetherapy.com/hoit</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
     <loc>https://www.handsonintegrativetherapy.com/recovrsports</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
 </urlset>
