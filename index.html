@@ -1,155 +1,92 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Base title + description for Google -->
-    <title>
-      Hands On Integrative Therapy &amp; RECOVR Sports | Athletic Therapy, VR Rehab, Massage in Montreal
-    </title>
-    <meta
-      name="description"
-      content="Hands On Integrative Therapy and RECOVR Sports provide athletic therapy, massage therapy, and virtual reality based sports rehab in Montreal."
-    />
+  <!-- Base SEO -->
+  <title>Hands On Integrative Therapy & RECOVR Sports | Athletic Therapy, VR Rehab, Massage in Montreal</title>
+  <meta
+    name="description"
+    content="Athletic therapy, massage therapy, and VR rehabilitation in Montreal. Hands On Integrative Therapy and RECOVR Sports offer injury rehab, pain relief, mobility therapy, and high performance recovery in Outremont and Mile End."
+  />
+  <meta name="robots" content="index, follow" />
 
-    <!-- Favicon (adjust path if logo is elsewhere) -->
-    <link rel="icon" type="image/png" href="/img/recovr-logo.png" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/img/recovr-logo.png" />
 
-    <!-- Google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- Canonical URL -->
-    <link
-      rel="canonical"
-      href="https://www.handsonintegrativetherapy.com/"
-    />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.handsonintegrativetherapy.com/" />
 
-    <!-- Open Graph (Facebook, LinkedIn, etc.) -->
-    <meta
-      property="og:site_name"
-      content="RECOVR Sports + Hands On Integrative Therapy"
-    />
-    <meta
-      property="og:title"
-      content="Hands On Integrative Therapy &amp; RECOVR Sports"
-    />
-    <meta
-      property="og:description"
-      content="Virtual reality based rehab and high performance sports therapy in Montreal, plus hands-on athletic therapy and massage."
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://www.handsonintegrativetherapy.com/"
-    />
-    <!-- If your file is actually PNG, change .jpg to .png -->
-    <meta
-      property="og:image"
-      content="https://www.handsonintegrativetherapy.com/img/og-main.jpg"
-    />
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="RECOVR Sports and Hands On Integrative Therapy" />
+  <meta property="og:title" content="Hands On Integrative Therapy & RECOVR Sports" />
+  <meta
+    property="og:description"
+    content="Virtual reality rehab and high performance sports therapy in Montreal, plus hands on athletic therapy and massage therapy."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.handsonintegrativetherapy.com/" />
+  <meta property="og:image" content="https://www.handsonintegrativetherapy.com/img/og-main.jpg" />
 
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="RECOVR Sports + Hands On Integrative Therapy"
-    />
-    <meta
-      name="twitter:description"
-      content="Virtual reality rehab, athletic therapy, and massage therapy in Montreal."
-    />
-    <meta
-      name="twitter:image"
-      content="https://www.handsonintegrativetherapy.com/img/og-main.jpg"
-    />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RECOVR Sports and Hands On Integrative Therapy" />
+  <meta
+    name="twitter:description"
+    content="Virtual reality rehab, athletic therapy, and massage therapy in Montreal."
+  />
+  <meta name="twitter:image" content="https://www.handsonintegrativetherapy.com/img/og-main.jpg" />
 
-    <!-- Bing webmaster verification (keep your actual code here) -->
-    <meta
-      name="msvalidate.01"
-      content="2F3998538628CDC0144F507457E3DAE9"
-    />
+  <!-- Bing Verification -->
+  <meta name="msvalidate.01" content="2F3998538628CDC0144F507457E3DAE9" />
 
-    <!-- Local business schema (fill in address/phone) -->
-    <script type="application/ld+json">
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsMedicineClinic",
+    "name": "Hands On Integrative Therapy and RECOVR Sports",
+    "url": "https://www.handsonintegrativetherapy.com/",
+    "image": "https://www.handsonintegrativetherapy.com/img/og-main.jpg",
+    "description": "Athletic therapy, massage therapy, and VR rehabilitation in Montreal. Hands On Integrative Therapy and RECOVR Sports offer injury rehab, pain relief, mobility therapy, and high performance recovery in Outremont and Mile End.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "202 Rue Saint Zotique O, Suite C100",
+      "addressLocality": "Montreal",
+      "addressRegion": "QC",
+      "postalCode": "H2V 4L5",
+      "addressCountry": "CA"
+    },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Montreal" },
+      { "@type": "AdministrativeArea", "name": "Outremont" },
+      { "@type": "AdministrativeArea", "name": "Mile End" }
+    ],
+    "department": [
       {
-        "@context": "https://schema.org",
-        "@type": "MedicalBusiness",
-        "name": "Hands On Integrative Therapy",
-        "url": "https://www.handsonintegrativetherapy.com",
-        "logo": "https://www.handsonintegrativetherapy.com/img/og-main.jpg",
-        "image": "https://www.handsonintegrativetherapy.com/img/og-main.jpg",
-        "description": "Athletic therapy, massage therapy, virtual reality rehab, and high performance sports therapy in Montreal.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "202 Rue Saint Zotique O, Suite C100",
-          "addressLocality": "Montreal",
-          "addressRegion": "QC",
-          "postalCode": "H2V 4L5",
-          "addressCountry": "CA"
-        },
-        "telephone": "YOUR_PHONE_NUMBER_HERE",
-        "priceRange": "$$",
-        "areaServed": "Montreal, QC",
-        "sameAs": [
-          "https://www.handsonintegrativetherapy.com"
-        ]
-      }
-    </script>
-
-    <!-- Service schema: athletic therapy -->
-    <script type="application/ld+json">
+        "@type": "MedicalClinic",
+        "name": "Hands On Integrative Therapy"
+      },
       {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "Athletic Therapy",
-        "provider": {
-          "@type": "MedicalBusiness",
-          "name": "Hands On Integrative Therapy"
-        },
-        "areaServed": "Montreal, QC"
+        "@type": "MedicalClinic",
+        "name": "RECOVR Sports"
       }
-    </script>
+    ]
+  }
+  </script>
+</head>
 
-    <!-- Service schema: massage therapy -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "Massage Therapy",
-        "provider": {
-          "@type": "MedicalBusiness",
-          "name": "Hands On Integrative Therapy"
-        },
-        "areaServed": "Montreal, QC"
-      }
-    </script>
-
-    <!-- Service schema: VR sports rehab / RECOVR Sports -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "Virtual Reality Sports Rehab",
-        "provider": {
-          "@type": "MedicalBusiness",
-          "name": "RECOVR Sports"
-        },
-        "areaServed": "Montreal, QC"
-      }
-    </script>
-  </head>
-
-  <body class="font-sans antialiased text-gray-800">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<body class="font-sans antialiased text-gray-800">
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
 </html>
