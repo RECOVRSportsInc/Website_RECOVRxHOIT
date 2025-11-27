@@ -7,10 +7,11 @@ export function Hero() {
       {/* Faded field / action photo */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
-          src="/img/recovr-field.jpg"
-          alt=""
-          className="w-full h-full object-cover"
-          data-no-translate
+            src="/img/recovr-space-1.jpg"
+            alt="RECOVR Sports virtual reality rehab and sports performance lab in Montreal"
+            className="w-full h-full object-cover"
+            data-no-translate
+            aria-hidden="true"
         />
         {/* Darken with warm gold tint */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0b1020]/85 via-[#000000]/70 to-[#f3bd3e]/35" />

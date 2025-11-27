@@ -5,7 +5,12 @@ export function BrandMark() {
   return (
     <section className="section bg-[#3db0fc]">
       <div className="container flex items-center justify-center">
-        <img src="/img/hoit-logo.png" alt="HOIT logo" className="h-24 md:h-32" />
+        <img
+            src="/img/hoit-logo.png"
+            alt="Hands On Integrative Therapy logo"
+            className="h-16 md:h-20"
+            data-no-translate
+        />
       </div>
     </section>
   );
