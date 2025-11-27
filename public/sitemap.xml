@@ -1,22 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
   <url>
     <loc>https://www.handsonintegrativetherapy.com/</loc>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <changefreq>weekly</changefreq>
   </url>
 
+  <!-- HOIT main sections (all on same page, but useful for clarity) -->
   <url>
-    <loc>https://www.handsonintegrativetherapy.com/hoit</loc>
-    <priority>0.9</priority>
+    <loc>https://www.handsonintegrativetherapy.com/#services</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.handsonintegrativetherapy.com/#pricing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.handsonintegrativetherapy.com/#gallery</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.handsonintegrativetherapy.com/#about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.handsonintegrativetherapy.com/#contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
+  <!-- RECOVR landing (same domain, different brand) -->
   <url>
     <loc>https://www.handsonintegrativetherapy.com/recovrsports</loc>
-    <priority>0.9</priority>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
-
 </urlset>
