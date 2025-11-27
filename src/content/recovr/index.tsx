@@ -5,10 +5,10 @@ import { Programs } from "./Programs";
 import { Gallery } from "./Gallery";
 import { Contact } from "./Contact";
 import { BrandMark } from "./Brandmark";
-import { Footer } from "./Footer";
+import { FAQ } from "./FAQ"; // <- new
 
 export { Hero };
 
-export const Sections = [Programs, Gallery, Contact, BrandMark];
+export const Sections = [Programs, Gallery, Contact, FAQ, BrandMark];
 
-export { Footer };
+export { Footer } from "./Footer";

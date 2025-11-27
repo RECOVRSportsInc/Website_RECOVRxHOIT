@@ -28,6 +28,7 @@ export function Services() {
       desc: "Discuss goals or concerns remotely, get advice, and an initial plan before your first session.",
     },
   ];
+
   return (
     <section id="services" className="section bg-white">
       <div className="container">
@@ -37,6 +38,7 @@ export function Services() {
         >
           Services
         </h2>
+
         <div className="grid sm:grid-cols-2 gap-6">
           {items.map((it) => (
             <div
@@ -48,6 +50,15 @@ export function Services() {
             </div>
           ))}
         </div>
+
+        {/* Soft SEO blurb under cards */}
+        <p className="mt-10 max-w-3xl mx-auto text-sm md:text-base text-slate-600 leading-relaxed">
+          Hands On Integrative Therapy provides athletic therapy, massage therapy,
+          sports rehabilitation, fitness strengthening and sports field coverage
+          in the Montreal, Outremont and Mile End area. Sessions focus on pain
+          reduction, active recovery and a safe return to sport for athletes and
+          active people of all ages.
+        </p>
       </div>
     </section>
   );

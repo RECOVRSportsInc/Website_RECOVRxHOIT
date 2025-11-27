@@ -126,6 +126,12 @@ function translateText(text: string, to: Lang): string {
       "Discuss goals or concerns remotely, get advice, and an initial plan before your first session.",
       "Discutez de vos objectifs ou préoccupations à distance, obtenez des conseils et un plan initial avant votre première séance."
     );
+  
+    // HOIT services SEO blurb under cards
+  out = out.replace(
+    "Hands On Integrative Therapy provides athletic therapy, massage therapy, sports rehabilitation, fitness strengthening and sports field coverage in the Montreal, Outremont and Mile End area. Sessions focus on pain reduction, active recovery and a safe return to sport for athletes and active people of all ages.",
+    "Hands On Integrative Therapy offre des services de thérapie sportive, de massothérapie, de réadaptation sportive, de renforcement physique et de couverture sur le terrain dans les quartiers de Montréal, Outremont et Mile-End. Les séances sont axées sur la réduction de la douleur, la récupération active et un retour au sport en toute sécurité pour les athlètes et les personnes actives de tous âges."
+  );
 
   // HOIT privacy main paragraph
   out = out.replace(

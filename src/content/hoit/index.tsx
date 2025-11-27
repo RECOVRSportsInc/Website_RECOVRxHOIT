@@ -6,22 +6,19 @@ import { Services } from "./Services";
 import { Pricing } from "./Pricing";
 import { Gallery } from "./Gallery";
 import { About } from "./About";
-import { PrivacyPolicy } from "./PrivacyPolicy";
-import { CancellationPolicy } from "./CancellationPolicy";
 import { Contact } from "./Contact";
 import { BrandMark } from "./BrandMark";
+import { FAQ } from "./FAQ"; // <- add this
 
 export { Hero };
 
-/* EXPORTS used elsewhere in the app */
 export const Sections = [
   Services,
   Pricing,
   Gallery,
   About,
-  PrivacyPolicy,
-  CancellationPolicy,
   Contact,
+  FAQ,       // <- add it where you want it to appear
   BrandMark,
 ];
 
