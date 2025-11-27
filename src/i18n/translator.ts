@@ -90,6 +90,17 @@ function translateText(text: string, to: Lang): string {
     "Athletic therapy and massage therapy services for all ages with an integrative, hands on approach to recovery and performance.",
     "Services de thérapie sportive et de massothérapie pour tous les âges, avec une approche pratique et intégrée de la récupération et de la performance."
   );
+    // New HOIT hero subheading (inside H1)
+  out = out.replace(
+    "Sports medicine and athletic therapy clinic in Montreal",
+    "Clinique de médecine du sport et de thérapie sportive à Montréal."
+  );
+
+  // New RECOVR hero subheading (inside H1)
+  out = out.replace(
+    "Virtual reality sports rehab lab in Montreal",
+    "Laboratoire de réadaptation sportive en réalité virtuelle à Montréal."
+  );
 
   // HOIT services cards (includes Sports Field Coverage)
   out = out
