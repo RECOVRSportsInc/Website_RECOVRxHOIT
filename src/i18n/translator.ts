@@ -225,6 +225,17 @@ function translateText(text: string, to: Lang): string {
       "Yes, the RECOVR Sports lab can be booked for teams, small groups, or private training blocks. Use the Réserver l'espace button to request a time and share a bit about your group.",
       "Oui, le laboratoire RECOVR Sports peut être réservé pour des équipes, des petits groupes ou des blocs d'entraînement privés. Utilisez le bouton « Réserver l'espace » pour proposer un horaire et nous parler de votre groupe."
     )
+       // Cross-brand hero links
+  out = out
+    .replace(
+      "Looking for RECOVR Sports?",
+      "Vous cherchez RECOVR Sports ?"
+    )
+    .replace(
+      "Looking for Hands On Integrative Therapy?",
+      "Vous cherchez Hands On Integrative Therapy ?"
+    )
+    .replace(/Click here/gi, "Cliquez ici");
 
   // HOIT privacy second sentence, just the text node before the link
   out = out.replace(
