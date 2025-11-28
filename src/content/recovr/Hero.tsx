@@ -17,7 +17,7 @@ export function Hero() {
 
       {/* Glow blobs */}
       <div
-        className="pointer-events-none absolute -left-40 -bottom-40 h-80 w-80 rounded-full bg-[#f3bd3e]/24 blur-3xl"
+        className="pointer-events-none absolute -left-40 -bottom-40 h-80 w-80 rounded-full bg-[#f3bd3e]/20 blur-3xl"
         aria-hidden="true"
       />
       <div
@@ -31,9 +31,10 @@ export function Hero() {
           <span data-no-translate>RECOVR Sports Lab</span>
         </div>
 
-        <div className="rounded-3xl bg-black/85 border border-[#22A1FF]/40 backdrop-blur-xl p-8 md:p-10 shadow-[0_40px_140px_rgba(243,189,62,0.9)]">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-[#f3bd3e] drop-shadow-[0_16px_45px_rgba(0,0,0,0.85)]">
-            RECOVR SPORTS
+        <div className="rounded-3xl bg-black/85 border border-[#22A1FF]/40 backdrop-blur-xl p-8 md:p-10 shadow-[0_40px_140px_rgba(34,161,255,0.8)]">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-[0_16px_45px_rgba(0,0,0,0.85)]">
+            <span className="text-[#f3bd3e]">RECOVR</span>{" "}
+            <span className="text-white">SPORTS</span>
             <span className="block mt-3 text-2xl md:text-3xl text-slate-100">
               Virtual reality sports rehab lab in Montreal
             </span>
@@ -55,7 +56,7 @@ export function Hero() {
               href="https://calendar.app.google/2zL7FqkZmEQTwnKZ7"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold border border-[#f3bd3e] text-[#f3bd3e] bg-black/40 hover:bg-black/70 shadow-[0_0_35px_rgba(243,189,62,0.8)] hover:shadow-[0_0_55px_rgba(243,189,62,0.95)] hover:-translate-y-[1px] transition-transform duration-200"
+              className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold border border-[#f3bd3e] text-[#f3bd3e] bg-black/40 hover:bg-black/70 shadow-[0_0_35px_rgba(34,161,255,0.6)] hover:shadow-[0_0_55px_rgba(34,161,255,0.9)] hover:-translate-y-[1px] transition-transform duration-200"
             >
               Book the Space
             </a>
