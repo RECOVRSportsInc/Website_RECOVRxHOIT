@@ -2,42 +2,39 @@
 
 import { useBrand } from "../brand/BrandContext";
 
-export default function BrandSwitch() {
+type Props = {
+  onClick?: () => void;
+};
+
+export default function BrandSwitch({ onClick }: Props) {
   const { brand } = useBrand();
 
   const isHoit = brand.key === "hoit";
-  const targetHref = isHoit ? "/recovrsports" : "/";
+  const targetHref = isHoit ? "/recovrsports" : "/"; // HOIT -> RECOVR, RECOVR -> HOIT
   const label = isHoit ? "Switch to RECOVR" : "Switch to HOIT";
 
-  const baseClasses = [
-    "inline-flex items-center justify-center",
-    "h-12 px-5 rounded-full",
-    "text-xs sm:text-sm font-bold tracking-wide whitespace-nowrap",
-    "shadow-[0_12px_30px_rgba(0,0,0,0.8)]",
-    "transition-transform duration-150",
-    "hover:-translate-y-[1px] hover:shadow-[0_18px_45px_rgba(0,0,0,0.95)]",
-    "border border-white/15",
-    "backdrop-blur-sm",
-    "focus-visible:outline-none",
-    "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
-  ].join(" ");
+  const baseClasses =
+    "inline-flex items-center justify-center h-10 rounded-full px-4 text-xs sm:text-sm font-bold " +
+    "shadow-[0_12px_30px_rgba(0,0,0,0.5)] " +
+    "transition-transform duration-150 hover:-translate-y-[1px] hover:shadow-[0_18px_40px_rgba(0,0,0,0.8)] " +
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black whitespace-nowrap";
 
-  // On HOIT, button is gold to go to RECOVR
-  // On RECOVR, button is baby blue to go to HOIT
-  const hoitSideClasses =
-    "bg-gradient-to-r from-[#f9d66f] via-[#f3bd3e] to-[#c99321] text-black";
-  const recovrSideClasses =
-    "bg-gradient-to-r from-[#4cc3ff] via-[#22A1FF] to-[#0b8de8] text-white";
+  // HOIT view shows "Switch to RECOVR" in gold, RECOVR view shows "Switch to HOIT" in baby blue
+  const hoitClasses = "bg-[#f3bd3e] text-black"; // when on HOIT
+  const recovrClasses = "bg-[#22A1FF] text-black"; // when on RECOVR
 
-  const classes = `${baseClasses} ${isHoit ? hoitSideClasses : recovrSideClasses}`;
+  const classes = baseClasses + " " + (isHoit ? hoitClasses : recovrClasses);
+
+  const handleClick = () => {
+    if (onClick) onClick();
+    window.location.href = targetHref;
+  };
 
   return (
     <button
       type="button"
       className={classes}
-      onClick={() => {
-        window.location.href = targetHref;
-      }}
+      onClick={handleClick}
       data-no-translate
     >
       {label}

@@ -9,19 +9,19 @@ export function LanguageToggle() {
   const buttonClasses = (code: Lang) => {
     const isActive = lang === code;
     return [
-      "px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold border",
-      "transition-colors duration-150",
-      "shadow-[0_0_18px_rgba(0,0,0,0.8)]",
+      "px-3 py-1 rounded-full text-xs font-semibold border",
+      "transition-all duration-150",
+      "shadow-[0_4px_14px_rgba(0,0,0,0.5)]",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
       isActive
-        ? "bg-[#E972FF] text-black border-[#E972FF] shadow-[0_0_32px_rgba(233,114,255,0.9)]"
-        : "bg-black/85 text-white border-[#E972FF] hover:bg-black",
+        ? "bg-[#E972FF] text-black border-[#E972FF]"
+        : "bg-black text-white border-white/30 hover:border-[#E972FF]",
     ].join(" ");
   };
 
   return (
     <div
-      className="inline-flex items-center gap-1 rounded-full bg-black/70 px-1 py-1 border border-white/10 shadow-[0_0_24px_rgba(0,0,0,0.8)]"
+      className="inline-flex items-center gap-1 bg-transparent"
       data-no-translate
     >
       <button

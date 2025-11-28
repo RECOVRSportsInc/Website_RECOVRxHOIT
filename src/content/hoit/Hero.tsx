@@ -1,14 +1,45 @@
 // src/content/hoit/Hero.tsx
 
-/* HERO – HOIT */
+import { useI18n } from "../../i18n/useI18n";
 
+/* HERO – HOIT */
 export function Hero() {
+  const { lang } = useI18n();
+
+  const helper = (
+    <p className="text-sm text-slate-100/85 text-right">
+      {lang === "fr" ? (
+        <>
+          Vous cherchez RECOVR Sports?{" "}
+          <a
+            href="/recovrsports"
+            className="font-semibold text-[#22A1FF] underline-offset-4 hover:underline"
+          >
+            Cliquez ici
+          </a>
+          .
+        </>
+      ) : (
+        <>
+          Looking for RECOVR Sports?{" "}
+          <a
+            href="/recovrsports"
+            className="font-semibold text-[#22A1FF] underline-offset-4 hover:underline"
+          >
+            Click here
+          </a>
+          .
+        </>
+      )}
+    </p>
+  );
+
   return (
     <section className="relative overflow-hidden pt-28 pb-24 bg-[#020617]">
       {/* Background photo */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
-          src="/img/hoit-clinic-1.jpg" // <== change to your actual filename if different
+          src="/img/hoit-clinic-1.jpg"
           alt=""
           className="w-full h-full object-cover opacity-35"
           data-no-translate
@@ -61,6 +92,9 @@ export function Hero() {
             </a>
           </div>
         </div>
+
+        {/* Helper line under the card */}
+        <div className="mt-4 flex justify-end">{helper}</div>
       </div>
     </section>
   );

@@ -1,7 +1,39 @@
 // src/content/recovr/Hero.tsx
 
+import { useI18n } from "../../i18n/useI18n";
+
 /* HERO – RECOVR */
 export function Hero() {
+  const { lang } = useI18n();
+
+  const helper = (
+    <p className="text-sm text-slate-100/85 text-right">
+      {lang === "fr" ? (
+        <>
+          Vous cherchez Hands On Integrative Therapy?{" "}
+          <a
+            href="/"
+            className="font-semibold text-[#f3bd3e] underline-offset-4 hover:underline"
+          >
+            Cliquez ici
+          </a>
+          .
+        </>
+      ) : (
+        <>
+          Looking for Hands On Integrative Therapy?{" "}
+          <a
+            href="/"
+            className="font-semibold text-[#f3bd3e] underline-offset-4 hover:underline"
+          >
+            Click here
+          </a>
+          .
+        </>
+      )}
+    </p>
+  );
+
   return (
     <section className="relative overflow-hidden pt-28 pb-24 bg-[#0b1020]">
       {/* Faded stadium / action photo */}
@@ -25,18 +57,16 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* Content */}
+      {/* Content card */}
       <div className="relative container section max-w-5xl">
-        {/* Small lab label pill (top only) */}
         <div className="inline-flex items-center px-4 py-1 mb-6 text-[0.7rem] tracking-[0.2em] uppercase rounded-full border border-[#22A1FF]/40 bg-black/40 backdrop-blur-md text-white/80">
           <span data-no-translate>RECOVR Sports Lab</span>
         </div>
 
-        {/* Main hero card */}
         <div className="rounded-3xl bg-black/85 border border-[#22A1FF]/40 backdrop-blur-xl p-8 md:p-10 shadow-[0_40px_140px_rgba(34,161,255,0.8)]">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-[0_16px_45px_rgba(0,0,0,0.85)]">
             <span className="text-[#f3bd3e]">RECOVR</span>{" "}
-            <span className="text-slate-50">SPORTS</span>
+            <span className="text-slate-100">SPORTS</span>
             <span className="block mt-3 text-2xl md:text-3xl text-slate-100">
               Virtual reality sports rehab lab in Montreal
             </span>
@@ -65,16 +95,8 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Cross-brand link under card */}
-        <div className="mt-6 text-center md:text-right text-xs md:text-sm text-white/75">
-          <span>Looking for Hands On Integrative Therapy? </span>
-          <a
-            href="/"
-            className="font-semibold text-[#f3bd3e] hover:text-[#ffd368] no-underline transition-colors duration-150"
-          >
-            Click here
-          </a>
-        </div>
+        {/* Helper line under the card */}
+        <div className="mt-4 flex justify-end">{helper}</div>
       </div>
     </section>
   );
