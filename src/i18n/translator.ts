@@ -150,6 +150,82 @@ function translateText(text: string, to: Lang): string {
     "Nous ne recueillons que les informations nécessaires pour réserver et offrir les services, comme votre nom, vos coordonnées et les renseignements de santé pertinents que vous choisissez de partager. Ces informations servent à vous offrir des soins, gérer vos rendez-vous et communiquer avec vous."
   );
 
+  // HOIT / RECOVR FAQ
+  out = out
+    // Section title (handle both “Asked” and “asked” just in case)
+    .replace(/Frequently asked questions/gi, "Foire aux questions")
+
+    // HOIT Q1
+    .replace("What conditions do you treat?", "Quels types de problèmes traitez-vous ?")
+    .replace(
+      "Athletic therapy and massage therapy at HOIT can help with sport injuries, sprains and strains, back and neck pain, postural issues, overuse injuries, and recovery after surgery or immobilization.",
+      "Les services de thérapie sportive et de massothérapie chez HOIT peuvent aider pour les blessures sportives, les entorses et foulures, les douleurs au dos et au cou, les problèmes de posture, les blessures de surutilisation ainsi que la récupération après une chirurgie ou une immobilisation."
+    )
+
+    // HOIT Q2
+    .replace("Do I need a doctor's referral?", "Ai-je besoin d'une recommandation d'un médecin ?")
+    .replace(
+      "You do not need a doctor's referral to book a session. Some insurance plans may require a prescription for reimbursement, so it is a good idea to check with your provider.",
+      "Vous n'avez pas besoin d'une recommandation d'un médecin pour réserver une séance. Certains régimes d'assurance peuvent exiger une prescription pour le remboursement, il est donc conseillé de vérifier auprès de votre assureur."
+    )
+        // Fix hybrid HOIT Q2 after "Book A Session" was already translated
+    .replace(
+      "You do not need a doctor's referral to Réserver une séance. Some insurance plans may require a prescription for reimbursement, so it is a good idea to check with your provider.",
+      "Vous n'avez pas besoin d'une recommandation d'un médecin pour réserver une séance. Certains régimes d'assurance peuvent exiger une prescription pour le remboursement, il est donc conseillé de vérifier auprès de votre assureur."
+    )
+
+    // HOIT Q3
+    .replace(
+      "What should I wear to my appointment?",
+      "Que dois-je porter à mon rendez-vous ?"
+    )
+    .replace(
+      "Wear comfortable clothing that allows you to move easily, such as shorts, leggings, and a t shirt or tank top. You may be asked to expose the area being treated so it can be assessed properly.",
+      "Portez des vêtements confortables qui vous permettent de bouger facilement, comme des shorts, des leggings et un t-shirt ou un débardeur. Il se peut qu'on vous demande de découvrir la région à traiter afin de bien l'évaluer."
+    )
+
+    // HOIT Q4
+    .replace("Where are you located?", "Où êtes-vous situé ?")
+    .replace(
+      "Hands On Integrative Therapy is located at 202 Rue Saint Zotique O, Suite C100 in Montreal, close to Outremont and Mile End.",
+      "Hands On Integrative Therapy est situé au 202 Rue Saint-Zotique O, bureau C100 à Montréal, près d'Outremont et du Mile-End."
+    )
+
+    // RECOVR Q1
+    .replace("What is RECOVR Sports?", "Qu'est-ce que RECOVR Sports ?")
+    .replace(
+      "RECOVR Sports is a virtual reality sports rehab lab in Montreal that combines VR technology with sports medicine to help people recover from injuries and train in an engaging way.",
+      "RECOVR Sports est un laboratoire de réadaptation sportive en réalité virtuelle à Montréal qui combine la technologie RV et la médecine du sport pour aider les gens à récupérer de leurs blessures et à s'entraîner de façon motivante."
+    )
+
+    // RECOVR Q2
+    .replace("Is VR rehabilitation safe?", "La réadaptation en réalité virtuelle est-elle sécuritaire ?")
+    .replace(
+      "Yes, VR sessions are supervised and designed with graded exposure and activity levels. Movements and intensity are adapted to your current injury, your goals, and any medical advice you have received.",
+      "Oui, les séances de RV sont supervisées et conçues avec une exposition graduelle et des niveaux d'activité adaptés. Les mouvements et l'intensité sont ajustés à votre blessure actuelle, à vos objectifs et aux recommandations médicales que vous avez reçues."
+    )
+
+    // RECOVR Q3
+    .replace(
+      "Do I need experience with virtual reality?",
+      "Ai-je besoin d'expérience en réalité virtuelle ?"
+    )
+    .replace(
+      "No VR experience is required. You will be guided through how to use the headset and controllers, and sessions start with simple movements before progressing to more complex tasks.",
+      "Aucune expérience en réalité virtuelle n'est nécessaire. Vous serez guidé(e) dans l'utilisation du casque et des manettes, et les séances commencent par des mouvements simples avant de progresser vers des tâches plus complexes."
+    )
+    // RECOVR Q4
+        // Fix hybrid RECOVR Q4 question after "Book the Space" was translated
+    .replace(
+      "Can teams or groups Réserver l'espace?",
+      "Des équipes ou des groupes peuvent-ils réserver l'espace ?"
+    )
+    // Fix hybrid RECOVR Q4 answer after "Book the Space" was translated
+    .replace(
+      "Yes, the RECOVR Sports lab can be booked for teams, small groups, or private training blocks. Use the Réserver l'espace button to request a time and share a bit about your group.",
+      "Oui, le laboratoire RECOVR Sports peut être réservé pour des équipes, des petits groupes ou des blocs d'entraînement privés. Utilisez le bouton « Réserver l'espace » pour proposer un horaire et nous parler de votre groupe."
+    )
+
   // HOIT privacy second sentence, just the text node before the link
   out = out.replace(
     /We keep records securely and do not sell personal data\. You may request a copy or correction of your information at any time by completing\s*/g,
