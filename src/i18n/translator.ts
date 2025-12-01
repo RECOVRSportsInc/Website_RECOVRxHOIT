@@ -41,7 +41,7 @@ function translateText(text: string, to: Lang): string {
 
   let out = text;
 
-  // NAV / COMMON LABELS
+    // NAV / COMMON LABELS
   out = out
     .replace(/\bServices\b/g, "Services")
     .replace(/\bPricing\b/g, "Tarifs")
@@ -55,7 +55,8 @@ function translateText(text: string, to: Lang): string {
     .replace(/\bBook A Session\b/gi, "Réserver une séance")
     .replace(/\bBook the Space\b/gi, "Réserver l'espace")
     .replace(/\bView Services\b/gi, "Voir les services")
-    .replace(/\bour contact form\b/gi, "notre formulaire de contact");
+    .replace(/\bour contact form\b/gi, "notre formulaire de contact")
+    .replace(/\bAffiliated with\b/g, "Affilié avec"); 
 
   // HOIT pricing labels / notes
   out = out
@@ -85,7 +86,7 @@ function translateText(text: string, to: Lang): string {
       "Première consultation seulement pour les nouveaux clients"
     );
 
-  // HOIT hero subtitle
+    // HOIT hero subtitle
   out = out.replace(
     "Athletic therapy and massage therapy services for all ages with an integrative, hands on approach to recovery and performance.",
     "Services de thérapie sportive et de massothérapie pour tous les âges, avec une approche pratique et intégrée de la récupération et de la performance."

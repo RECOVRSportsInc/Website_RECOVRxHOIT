@@ -5,10 +5,19 @@ import { Programs } from "./Programs";
 import { Gallery } from "./Gallery";
 import { Contact } from "./Contact";
 import { BrandMark } from "./Brandmark";
-import { FAQ } from "./FAQ"; // <- new
+import { FAQ } from "./FAQ";
+import { Affiliations } from "./Affiliations"; // <- NEW
 
 export { Hero };
 
-export const Sections = [Programs, Gallery, Contact, FAQ, BrandMark];
+// order = how sections render under the hero
+export const Sections = [
+  Affiliations, // <- NEW: right after the hero
+  Programs,
+  Gallery,
+  Contact,
+  FAQ,
+  BrandMark,
+];
 
 export { Footer } from "./Footer";

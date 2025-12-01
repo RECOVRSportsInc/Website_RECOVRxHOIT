@@ -30,7 +30,7 @@ export function Programs() {
   ];
 
   return (
-    <section id="programs" className="section bg-white">
+    <section id="programs" className="pt-10 pb-16 bg-white">
       <div className="container">
         <h2 className="text-3xl font-bold mb-6" style={{ color: "#000000" }}>
           Programs
