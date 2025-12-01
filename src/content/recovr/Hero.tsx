@@ -35,7 +35,7 @@ export function Hero() {
   );
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-24 bg-[#0b1020]">
+    <section className="relative overflow-hidden pt-16 pb-16 bg-[#0b1020]">
       {/* Faded stadium / action photo */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
