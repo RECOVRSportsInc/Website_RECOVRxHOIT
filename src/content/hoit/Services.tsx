@@ -30,7 +30,7 @@ export function Services() {
   ];
 
   return (
-    <section id="services" className="section bg-white">
+    <section id="services" className="pt-10 pb-16 bg-white">
       <div className="container">
         <h2
           className="text-3xl font-bold mb-6"

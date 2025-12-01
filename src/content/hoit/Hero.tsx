@@ -35,7 +35,7 @@ export function Hero() {
   );
 
   return (
-    <section className="relative overflow-hidden pt-16 pb-16 bg-[#020617]">
+    <section className="relative overflow-hidden pt-6 pb-16 bg-[#020617]">
       {/* Background photo */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img

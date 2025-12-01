@@ -1,4 +1,3 @@
-//
 // src/content/hoit/index.tsx
 
 import { Hero } from "./Hero";
@@ -8,17 +7,20 @@ import { Gallery } from "./Gallery";
 import { About } from "./About";
 import { Contact } from "./Contact";
 import { BrandMark } from "./BrandMark";
-import { FAQ } from "./FAQ"; // <- add this
+import { FAQ } from "./FAQ"; // <- existing
+import { Affiliations } from "./Affiliations"; // <- NEW
 
 export { Hero };
 
+// order = how the sections show up under the hero
 export const Sections = [
+  Affiliations, // <- NEW: appears right below hero
   Services,
   Pricing,
   Gallery,
   About,
   Contact,
-  FAQ,       // <- add it where you want it to appear
+  FAQ,
   BrandMark,
 ];
 
