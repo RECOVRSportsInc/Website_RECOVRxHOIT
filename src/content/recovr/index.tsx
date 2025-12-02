@@ -6,7 +6,8 @@ import { Gallery } from "./Gallery";
 import { Contact } from "./Contact";
 import { BrandMark } from "./Brandmark";
 import { FAQ } from "./FAQ";
-import { Affiliations } from "./Affiliations"; // <- NEW
+import { Affiliations } from "./Affiliations";
+import { Blog } from "./Blog";
 
 export { Hero };
 
@@ -17,6 +18,7 @@ export const Sections = [
   Gallery,
   Contact,
   FAQ,
+  Blog,
   BrandMark,
 ];
 

@@ -8,7 +8,7 @@ export function Contact() {
         <div className="card card-accent-blue p-6">
           <h2
             className="text-2xl font-bold mb-2"
-            style={{ color: "#3db0fc" }}
+            style={{ color: "#22A1FF" }}
           >
             Contact
           </h2>
@@ -16,7 +16,7 @@ export function Contact() {
             href="https://docs.google.com/forms/d/e/1FAIpQLSc4b6NvhOdPmc_YTL53DNUEQDVhtrC1Fb1ZX62hPE9V0hyeXQ/viewform?usp=dialog"
             target="_blank"
             rel="noopener"
-            style={{ color: "#3db0fc" }}
+            style={{ color: "#22A1FF" }}
             className="hover:underline"
           >
             handsonintegrativetherapy@gmail.com

@@ -22,7 +22,7 @@ export function FAQ() {
   ];
 
   return (
-    <section id="faq-recovr" className="section bg-[#020617]">
+    <section id="faq-recovr" className="section bg-white">
       <div className="container max-w-4xl">
         <h2 className="text-3xl font-bold mb-6 text-[#f3bd3e]">
           Frequently asked questions

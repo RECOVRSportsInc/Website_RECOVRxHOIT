@@ -2,7 +2,7 @@
 
 export function BrandMark() {
   return (
-    <section className="section bg-[#f3bd3e]">
+    <section className="section bg-white">
       <div className="container flex items-center justify-center">
         <img
           src="/img/recovr-logo-full.png"

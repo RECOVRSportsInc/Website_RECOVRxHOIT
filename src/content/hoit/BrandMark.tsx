@@ -3,7 +3,7 @@
 /* BIG LOGO at bottom */
 export function BrandMark() {
   return (
-    <section className="section bg-[#3db0fc]">
+    <section className="section bg-black">
       <div className="container flex items-center justify-center">
         <img
             src="/img/hoit-logo.png"
