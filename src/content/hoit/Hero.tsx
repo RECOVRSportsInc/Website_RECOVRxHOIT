@@ -1,10 +1,12 @@
-// src/content/hoit/Hero.tsx
-
 import { useI18n } from "../../i18n/useI18n";
 
 /* HERO – HOIT */
 export function Hero() {
   const { lang } = useI18n();
+
+  // Use the same booking link your pricing "Book a Session" button uses
+  const bookingUrl =
+    "https://calendar.app.google/frgQtD5a3P7Z3t1r6"; 
 
   const helper = (
     <p className="text-sm text-slate-100/85 text-right">
@@ -35,7 +37,7 @@ export function Hero() {
   );
 
   return (
-    <section className="relative overflow-hidden pt-6 pb-16 bg-[#020617]">
+    <section className="relative overflow-hidden pt-16 pb-16 bg-[#020617]">
       {/* Background photo */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
@@ -78,17 +80,22 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
+            {/* Book A Session becomes the primary filled button and goes to booking URL */}
             <a
-              href="#services"
+              href={bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold bg-[#22A1FF] text-black shadow-[0_18px_60px_rgba(255,255,255,0.45)] hover:shadow-[0_26px_90px_rgba(255,255,255,0.7)] hover:-translate-y-[1px] transition-transform duration-200"
             >
-              View Services
+              Book A Session
             </a>
+
+            {/* View Services becomes the outline / secondary button */}
             <a
-              href="#contact"
+              href="#services"
               className="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-3 text-sm md:text-base font-semibold border border-[#22A1FF] text-[#22A1FF] bg-black/40 hover:bg-black/70 shadow-[0_0_35px_rgba(34,161,255,0.6)] hover:shadow-[0_0_55px_rgba(34,161,255,0.9)] hover:-translate-y-[1px] transition-transform duration-200"
             >
-              Book A Session
+              View Services
             </a>
           </div>
         </div>
