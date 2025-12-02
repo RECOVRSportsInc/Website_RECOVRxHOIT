@@ -9,7 +9,7 @@ export const translations = {
       languageFrench: "French",
       openBookingForm: "Open booking form",
       contactFormHere: "here",
-      affiliatedWith: "Affiliated with", 
+      affiliatedwithorworkedfor: "Affiliated with or Worked for", 
     },
 
     nav: {
@@ -149,7 +149,7 @@ export const translations = {
       languageFrench: "Français",
       openBookingForm: "Ouvrir le formulaire de réservation",
       contactFormHere: "ici",
-      affiliatedWith: "Affilié avec", 
+      affiliatedwithorworkedfor: "Affilié à ou a travaillé pour", 
     },
 
     nav: {

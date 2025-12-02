@@ -56,7 +56,7 @@ function translateText(text: string, to: Lang): string {
     .replace(/\bBook the Space\b/gi, "Réserver l'espace")
     .replace(/\bView Services\b/gi, "Voir les services")
     .replace(/\bour contact form\b/gi, "notre formulaire de contact")
-    .replace(/\bAffiliated with\b/g, "Affilié avec"); 
+    .replace(/\bAffiliated with or Worked for\b/g, "Affilié à ou a travaillé pour"); 
 
   // HOIT pricing labels / notes
   out = out
