@@ -28,7 +28,7 @@ export const Sections = [
 
 export function Footer() {
   return (
-    <footer className="py-10 border-t">
+    <footer className="py-10 bg-black">
       <div className="container text-sm text-white space-y-3">
         © 2018 Hands On Integrative Therapy
       </div>
