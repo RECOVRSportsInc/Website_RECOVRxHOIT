@@ -8,19 +8,21 @@ import { About } from "./About";
 import { Contact } from "./Contact";
 import { BrandMark } from "./BrandMark";
 import { FAQ } from "./FAQ"; // <- existing
-import { Affiliations } from "./Affiliations"; // <- NEW
+import { Affiliations } from "./Affiliations";
+import { Blog } from "./Blog";
 
 export { Hero };
 
 // order = how the sections show up under the hero
 export const Sections = [
-  Affiliations, // <- NEW: appears right below hero
+  Affiliations, 
   Services,
   Pricing,
   Gallery,
   About,
   Contact,
   FAQ,
+  Blog,
   BrandMark,
 ];
 

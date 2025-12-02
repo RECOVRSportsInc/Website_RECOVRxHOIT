@@ -29,8 +29,9 @@ export const BRANDS: Record<BrandKey, BrandConfig> = {
       { label: "Pricing", href: "#pricing" },
       { label: "Photo Gallery", href: "#gallery" },
       { label: "About Me", href: "#about" },
-      // privacy + cancellation removed from navbar as you asked
       { label: "Contact", href: "#contact" },
+      { label: "FAQ", href: "#faq" },
+      { label: "Blog", href: "#blog" },
     ],
   },
 
@@ -45,6 +46,8 @@ export const BRANDS: Record<BrandKey, BrandConfig> = {
       { label: "Programs", href: "#programs" },
       { label: "Photo Gallery", href: "#gallery" },
       { label: "Contact", href: "#contact" },
+      { label: "FAQ", href: "#faq" },
+      { label: "Blog", href: "#blog" },
     ],
   },
 };
